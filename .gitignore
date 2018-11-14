@@ -1,0 +1,7 @@
+# All files necessary to be removed from various folders
+
+Quora/datasets/		# Datasets folder for the Quora competition
+Quora/datasets/*
+config/			# Config folder for the DataScience Portfolio
+config/*
+
