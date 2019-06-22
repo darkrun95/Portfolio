@@ -29,6 +29,7 @@ DEBUG = True if os.environ.get("ENVIRONMENT") == "develop" else False
 ALLOWED_HOSTS = [
 	'localhost',
 	'127.0.0.1',
+    'www.arunpottekat.me'
 ]
 
 # Application definition
@@ -188,10 +189,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': '/cloudsql/deductive-mix-244414:us-central1:arunpottekat-portfoliodb-sql',
+            'NAME': 'ebdb',
             'USER': 'portfoliodb',
             'PASSWORD': 'Pokemon_1995',
-            'HOST': '35.188.49.104',
-            'PORT': '',
+            'HOST': 'aai4cuvfptjfrd.c7jvnuyjunjy.ap-southeast-2.rds.amazonaws.com',
+            'PORT': '3306',
         }
     }
