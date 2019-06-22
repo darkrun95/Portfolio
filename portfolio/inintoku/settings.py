@@ -109,20 +109,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'inintoku.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'portfoliodb',
-        'USER': 'arun',
-        'PASSWORD': 'arun123',
-        'HOST': 'localhost',
-        'PORT': '',
-    }
-}
-
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -180,10 +166,32 @@ if os.environ.get("ENVIRONMENT") == "develop":
             'STATS_FILE': os.path.join(BASE_DIR, 'frontend/webpack-stats-local.json'),
         }
     }
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'portfoliodb',
+            'USER': 'arun',
+            'PASSWORD': 'arun123',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 else:
     WEBPACK_LOADER = {
         'DEFAULT': {
             'BUNDLE_DIR_NAME': 'frontend/bundles/prod/',
             'STATS_FILE': os.path.join(BASE_DIR, 'frontend/webpack-stats-prod.json'),
+        }
+    }
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': '/cloudsql/deductive-mix-244414:us-central1:arunpottekat-portfoliodb-sql',
+            'USER': 'portfoliodb',
+            'PASSWORD': 'Pokemon_1995',
+            'HOST': '35.188.49.104',
+            'PORT': '',
         }
     }
