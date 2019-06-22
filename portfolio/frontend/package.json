@@ -1,0 +1,50 @@
+{
+    "name": "arunpottekat",
+    "version": "1.0.0",
+    "description": "Arun Pottekat - Portfolio",
+    "main": "index.js",
+    "scripts": {
+        "dev": "webpack --mode development ./src/index.js --output ../static/frontend/main.js",
+        "build": "webpack --mode production ./src/index.js --output ../static/frontend/main.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com:darkrun95/Data-Science.git"
+    },
+    "keywords": [
+        "Arun Pottekat",
+        "Portfolio"
+    ],
+    "author": "Arun Pottekat",
+    "license": "ISC",
+    "homepage": "https://github.com/darkrun95/Data-Science#data-science",
+    "devDependencies": {
+        "@babel/core": "^7.3.4",
+        "@babel/preset-env": "^7.3.4",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.5",
+        "babel-plugin-transform-class-properties": "^6.24.1",
+        "uglifyjs-webpack-plugin": "^2.1.2",
+        "weak-key": "^1.0.1",
+        "webpack": "^4.29.6",
+        "webpack-bundle-tracker": "^0.4.2-beta",
+        "webpack-cli": "^3.2.3",
+        "webpack-dev-server": "^3.2.1"
+    },
+    "dependencies": {
+        "@hot-loader/react-dom": "^16.8.3",
+        "bootstrap": "^4.3.1",
+        "jquery": "^3.4.0",
+        "path": "^0.12.7",
+        "prop-types": "^15.7.2",
+        "react": "^16.8.3",
+        "react-bootstrap": "^1.0.0-beta.5",
+        "react-dom": "^16.8.3",
+        "react-hot-loader": "^4.7.1",
+        "react-preloading-screen": "^1.0.2",
+        "react-router": "^4.3.1",
+        "react-router-dom": "^4.3.1",
+        "redux": "^4.0.1",
+        "underscore": "^1.9.1"
+    }
+}
