@@ -19,36 +19,16 @@ export class NavigationBar extends Component {
                         className="navbar-brand"
                         to = {{
                             pathname: "/",
-                        }} ><strong>Inintoku</strong></Link>
+                        }} ><strong>Portfolio</strong></Link>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="mr-auto">
-                            <Link
+                            {/*<Link
                                 className="nav-link"
                                 to = {{
                                     pathname: "/posts/",
                                     state: {fromDashboard: false},
-                                }} >Posts</Link> 
-                            {/*<Link
-                                className="nav-link"
-                                to = {{
-                                    pathname: "/posts/create/",
-                                    state: {fromDashboard: false},
-                                }} >Create Post</Link>*/}
-                        </Nav>
-                        <Nav>
-                            { loggedin ?
-                                <Link
-                                    className="nav-link"
-                                    to = {{
-                                        pathname: "/logout/"
-                                    }} >Log Out</Link> :
-                                <Link
-                                    className="nav-link"
-                                    to = {{
-                                        pathname: "/login/"
-                                    }} >Log In</Link>
-                            }
+                                }} >Educational Qualification</Link> */}
                         </Nav>
                     </Navbar.Collapse>
                 </Navbar>
