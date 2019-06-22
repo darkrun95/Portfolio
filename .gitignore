@@ -1,3 +1,5 @@
 config/
-
 portfolio/frontend/node_modules/
+portfolio/.ebextensions/
+portfolio/.elasticbeanstalk/
+portfolio/inintoku/settings.py
