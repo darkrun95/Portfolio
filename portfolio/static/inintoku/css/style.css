@@ -12,6 +12,8 @@
 
 #app {
     font-size: 15px;
+    height: 100vh;
+    padding: 10%;
     color: var(--main-font-color);
 }
 /* End Global Styles */
