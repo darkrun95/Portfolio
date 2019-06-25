@@ -5,7 +5,7 @@ class Home extends Component {
 	render() {
 		return (
             <div>
-                <Container maxWidth="md">
+                <Container maxWidth="lg">
                     <h1>Hello, </h1>
                     <p>
                         I'm Arun Pottekat, a Melbourne-based Developer <br/>
