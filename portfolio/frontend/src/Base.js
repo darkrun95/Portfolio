@@ -1,36 +1,26 @@
 import React, { Component } from 'react';
-import BodyContainer from './body/container/BodyContainer';
 import NavigationBarContainer from './navigation/container/NavigationBarContainer';
+import BodyContainer from './body/container/BodyContainer';
 import { Preloader, Placeholder } from 'react-preloading-screen';
-import { makeStyles } from '@material-ui/core/styles';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import { Image } from 'react-bootstrap';
 
 class Base extends Component {
-    constructor(props) {
-        super(props);
-        this.classes = makeStyles(theme => ({
-            progress: {
-                margin: theme.spacing(1),
-            },
-        }));
-    }
-
     render() {
-		return (
-			<div className="Base inintoku-app">
+        return (
+            <div className="Base inintoku-app">
                 <Preloader>
                     <NavigationBarContainer />
-    				<BodyContainer />
+                    <BodyContainer />
 
                     <Placeholder>
                         <span>
-                            <CircularProgress className={this.classes.progress} />
+                            <Image src="/static/inintoku/img/spinner.svg" fluid />
                         </span>
                     </Placeholder>
                 </Preloader>
-			</div>
-		);
-	}
+            </div>
+        );
+    }
 }
 
 export default Base;

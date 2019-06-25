@@ -12,7 +12,6 @@
 
 #app {
     font-size: 15px;
-    font-family: Roboto;
     color: var(--main-font-color);
 }
 /* End Global Styles */
@@ -25,56 +24,14 @@ input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px var(--main-blue) inset !important;
 }
 
-span.inintoku-post {
-    display: block;
-    margin-top: 2%;
-}
-
-span.inintoku-author {
-    font-weight: bold;
-}
-
-div.inintoku-card-body {
-    padding: 3%;
-}
-
 .inintoku-center {
     text-align: center;
-}
-
-.inintoku-center .pagination {
-    display: inline-flex;
 }
 
 .inintoku-navbar {
     background-color: var(--main-white) !important;
     padding: 1% 2% 1% 2%;
     color: var(--main-font-color);
-}
-
-.inintoku-container {
-    margin: 2% 20% 1% 20%;
-    box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.14);
-}
-
-.inintoku-cardimage {
-    margin: 2% 0 4% 0;
-    text-align: center;
-}
-
-.inintoku-login-container {
-    margin: 2% 35% 1% 35%;
-    padding: 3%;
-    width: 30%;
-    border: 1px solid rgba(0,0,0,0.14);
-}
-
-.inintoku-login-image-container {
-    text-align: center;
-}
-
-.inintoku-form {
-    margin-top: 6%;
 }
 
 .inintoku-color-green {
@@ -89,22 +46,8 @@ div.inintoku-card-body {
     color: var(--main-red);
 }
 
-.inintoku-color-red:hover {
-    color: var(--secondary-red);
-}
-
 a{
     text-decoration: none !important;
-}
-
-.inintoku-default-margin {
-    margin-top: 4%;
-}
-
-.inintoku-validation-symbol {
-    width: 5%;
-    height: 5%;
-    margin-bottom: 20px;
 }
 /* End Custom Styling */
 
@@ -114,60 +57,12 @@ a{
     .inintoku-navbar {
         padding: 1% 2% 1% 10%;
     }
-
-    .inintoku-validation-symbol {
-        width: 5%;
-        height: 5%;
-    }
-
-    .inintoku-container {
-        margin: 2% 10% 1% 10%;
-    }
-
-    .inintoku-login-container {
-        margin: 2% 25% 1% 25%;
-        padding: 6%;
-        width: 50%;
-        border: 1px solid rgba(0,0,0,0.14);
-    }
-
-    .inintoku-login-image-container {
-        text-align: center;
-    }
-
-    .inintoku-form {
-        margin-top: 6%;
-    }
 }
 
 /* For Screen Sizes 640px and below */
 @media screen and (max-width: 640px) {
     .inintoku-navbar {
         padding: 1% 2% 1% 5%;
-    }
-
-    .inintoku-validation-symbol {
-        width: 15%;
-        height: 15%;
-    }
-
-    .inintoku-container {
-        margin: 2% 5% 1% 5%;
-    }
-
-    .inintoku-login-container {
-        margin: 10% 5% 1% 5%;
-        padding: 10%;
-        width: 90%;
-        border: 1px solid rgba(0,0,0,0.14);
-    }
-
-    .inintoku-login-image-container {
-        text-align: center;
-    }
-
-    .inintoku-form {
-        margin-top: 6%;
     }
 }
 /* End Responsive Design */
