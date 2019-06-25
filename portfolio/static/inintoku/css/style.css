@@ -12,6 +12,7 @@
 
 #app {
     font-size: 15px;
+    font-family: Roboto;
     color: var(--main-font-color);
 }
 /* End Global Styles */
