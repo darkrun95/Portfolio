@@ -6,11 +6,10 @@ class Home extends Component {
 		return (
             <div>
                 <Container maxWidth="md">
-                    <h1>Arun Pottekat</h1>
+                    <h1>Hello, </h1>
                     <p>
-                        Something magical is soon about to come ...
-                        <br />
-                        For the time being, why not read some <strong>blog posts</strong>
+                        I'm Arun Pottekat, a Melbourne-based Developer <br/>
+                        devloping clean and modern code for the world-wide-web.
                     </p>
                 </Container>
             </div>

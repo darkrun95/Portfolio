@@ -26,6 +26,5 @@ urlpatterns = [
     path('favicon.ico', favicon_view),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls', namespace='api')),
-    path('api-auth/', include('rest_framework.urls')),
     path('', include('frontend.urls', namespace='frontend')),
 ]
