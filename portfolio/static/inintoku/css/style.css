@@ -71,8 +71,14 @@ a{
         padding-top: 5%;
     }
 
+    .inintoku-social {
+        width: 20%;
+        display: inline-block;
+        margin-right: 2%;
+    }
+
     .inintoku-sidebar-icon {
-        width: 8%;
+        width: 15%;
         margin-right: 5%;
     }
 }
