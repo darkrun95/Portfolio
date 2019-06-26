@@ -45,6 +45,13 @@ input:-webkit-autofill:active  {
 a{
     text-decoration: none !important;
 }
+
+.inintoku-social {
+    width: 10%;
+    display: inline-block;
+    margin-right: 2%;
+}
+
 /* End Custom Styling */
 
 /* Begin Responsive Design */
