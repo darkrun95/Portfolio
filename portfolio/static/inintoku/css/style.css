@@ -13,7 +13,7 @@
 #app {
     font-size: 15px;
     height: 100vh;
-    padding: 10%;
+    padding-top: 10%;
     color: var(--main-font-color);
 }
 /* End Global Styles */
@@ -28,12 +28,6 @@ input:-webkit-autofill:active  {
 
 .inintoku-center {
     text-align: center;
-}
-
-.inintoku-navbar {
-    background-color: var(--main-white) !important;
-    padding: 1% 2% 1% 2%;
-    color: var(--main-font-color);
 }
 
 .inintoku-color-green {
@@ -56,15 +50,13 @@ a{
 /* Begin Responsive Design */
 /* For Screen Sizes 960px and below */
 @media screen and (max-width: 960px) {
-    .inintoku-navbar {
-        padding: 1% 2% 1% 10%;
-    }
+
 }
 
 /* For Screen Sizes 640px and below */
 @media screen and (max-width: 640px) {
-    .inintoku-navbar {
-        padding: 1% 2% 1% 5%;
+    .inintoku-main {
+        padding-top: 5%;
     }
 }
 /* End Responsive Design */
