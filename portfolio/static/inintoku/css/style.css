@@ -52,6 +52,11 @@ a{
     margin-right: 2%;
 }
 
+.inintoku-sidebar-icon {
+    width: 8%;
+    margin-right: 4%;
+}
+
 /* End Custom Styling */
 
 /* Begin Responsive Design */
@@ -64,6 +69,11 @@ a{
 @media screen and (max-width: 640px) {
     .inintoku-main {
         padding-top: 5%;
+    }
+
+    .inintoku-sidebar-icon {
+        width: 8%;
+        margin-right: 5%;
     }
 }
 /* End Responsive Design */

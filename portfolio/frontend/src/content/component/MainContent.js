@@ -13,17 +13,17 @@ class MainContent extends Component {
                 <div className="inintoku-footer">
                     <div className="inintoku-social">
                         <a href="https://github.com/darkrun95/">
-                            <Image src="/static/inintoku/img/github.png" thumbnail roundedCircle />
+                            <Image src="/static/inintoku/img/github.svg" thumbnail roundedCircle />
                         </a>
                     </div>
                     <div className="inintoku-social">
                         <a href="https://www.linkedin.com/in/arunpottekat/">
-                            <Image src="/static/inintoku/img/linkedin.png" thumbnail roundedCircle />
+                            <Image src="/static/inintoku/img/linkedin.svg" thumbnail roundedCircle />
                         </a>
                     </div>
                     <div className="inintoku-social">
                         <a href="mailto: contact@arunpottekat.me">
-                            <Image src="/static/inintoku/img/google.png" thumbnail roundedCircle />
+                            <Image src="/static/inintoku/img/google.svg" thumbnail roundedCircle />
                         </a>
                     </div>
                 </div>
