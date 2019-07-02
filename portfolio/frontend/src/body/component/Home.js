@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron, Container, Col, Row } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 import { Image } from 'react-bootstrap';
 import MainContentContainer from '../../content/container/MainContentContainer.js';
 import SideBarContainer from '../../content/container/SideBarContainer.js';

@@ -44,6 +44,7 @@ input:-webkit-autofill:active  {
 
 a{
     text-decoration: none !important;
+    color: var(--main-font-color);
 }
 
 .inintoku-social {
