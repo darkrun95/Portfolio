@@ -7,55 +7,55 @@ class SideBar extends Component {
         return (
             <div>
                 <ListGroup>
-                    <ListGroup.Item>
-                        <Link
+                    <Link
                         to = {{
                             pathname: "/experience",
                         }} >
+                        <ListGroup.Item>
                             <Image src="/static/inintoku/img/work.svg" className="inintoku-sidebar-icon" />
-                            Work Experience
-                        </Link>
-                    </ListGroup.Item>
+                            Experience
+                        </ListGroup.Item>
+                    </Link>
 
-                    <ListGroup.Item>
-                        <Link
+                    <Link
                         to = {{
                             pathname: "/education",
                         }} >
+                        <ListGroup.Item>
                             <Image src="/static/inintoku/img/college.svg" className="inintoku-sidebar-icon" />
                             Qualifications
-                        </Link>
-                    </ListGroup.Item>
-
-                    <ListGroup.Item>
-                        <Link
+                        </ListGroup.Item>
+                    </Link>
+                    
+                    <Link
                         to = {{
                             pathname: "/projects",
                         }} >
+                        <ListGroup.Item>
                             <Image src="/static/inintoku/img/project.svg" className="inintoku-sidebar-icon" />
                             Projects
-                        </Link>
-                    </ListGroup.Item>
+                        </ListGroup.Item>
+                    </Link>
 
-                    <ListGroup.Item>
-                        <Link
+                    <Link
                         to = {{
                             pathname: "/skills",
                         }} >
+                        <ListGroup.Item>
                             <Image src="/static/inintoku/img/skills.svg" className="inintoku-sidebar-icon" />
                             Technical Skills
-                        </Link>
-                    </ListGroup.Item>
+                        </ListGroup.Item>
+                    </Link>
 
-                    <ListGroup.Item>
-                        <Link
+                    <Link
                         to = {{
                             pathname: "/volunteering",
                         }} >
+                        <ListGroup.Item>
                             <Image src="/static/inintoku/img/activities.svg" className="inintoku-sidebar-icon" />
-                            Technical Skills
-                        </Link>
-                    </ListGroup.Item>
+                            Volunteering
+                        </ListGroup.Item>
+                    </Link>
                 </ListGroup>
             </div>
         );

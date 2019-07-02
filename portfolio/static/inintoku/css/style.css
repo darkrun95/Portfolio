@@ -58,6 +58,51 @@ a{
     margin-right: 4%;
 }
 
+.inintoku-face-image {
+    width: 60%;
+}
+
+.inintoku-education-item, .inintoku-list-item {
+    width: 100%;
+}
+
+.inintoku-icon-section {
+    float: left;
+    width: 2%;
+    display: inline-block;
+}
+
+.inintoku-university-listing {
+    width: 78%;
+    padding-left: 2%;
+    border-left: 1px solid var(--main-font-color);
+    display: inline-block;
+}
+
+.inintoku-education-row {
+    margin-bottom: 2%;
+    vertical-align: middle;
+}
+
+.inintoku-university-logo {
+    float: right;
+    width: 20%;
+    display: inline-block;
+}
+
+.inintoku-logo-image {
+    width: 90%;
+}
+
+.inintoku-back {
+    width: 10%;
+    padding-right: 2%;
+}
+
+hr {
+    border-top: 1px solid var(--main-font-color);
+}
+
 /* End Custom Styling */
 
 /* Begin Responsive Design */
@@ -81,6 +126,14 @@ a{
     .inintoku-sidebar-icon {
         width: 12%;
         margin-right: 5%;
+    }
+
+    .inintoku-education-row {
+        margin-bottom: 5%;
+    }
+
+    .inintoku-logo-image {
+        width: 100%;
     }
 }
 /* End Responsive Design */
