@@ -24,4 +24,3 @@ class Command(BaseCommand):
             print("Production deployment complete")
         else:
             print("Deployment cancelled")
-        print()
