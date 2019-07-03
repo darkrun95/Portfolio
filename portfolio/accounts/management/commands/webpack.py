@@ -19,8 +19,7 @@ class Command(BaseCommand):
         print("Pushed to git on branch {}".format(kwargs['branch'][0]))
         print()
 
-        print(kwargs)
-        if kwargs['deploy'] == True:
+        if kwargs['deploy'][0] == True:
             os.system("eb deploy Arunpottekat-env --profile arunpottekat")
             print("Production deployment complete")
         else:
