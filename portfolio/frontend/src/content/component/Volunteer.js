@@ -53,7 +53,7 @@ class Volunteer extends Component {
                                         <span className="inintoku-university-year">( Sep 2014 – Jan 2017 )</span>
                                     </p>
                                     <p className="inintoku-university-course">
-                                        <span><h6>Computer Society of India</h6></span>
+                                        <span><strong>Computer Society of India</strong></span>
                                     </p>
                                     <span className="inintoku-university-description">
                                         <ul>

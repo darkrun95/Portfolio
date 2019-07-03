@@ -124,6 +124,14 @@ hr {
 
 /* For Screen Sizes 640px and below */
 @media screen and (max-width: 640px) {
+    #app {
+        font-size: 12px;
+    }
+
+    .btn {
+        font-size: 12px;
+    }
+
     .inintoku-main {
         padding-top: 5%;
     }
