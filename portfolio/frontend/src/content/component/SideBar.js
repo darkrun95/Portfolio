@@ -59,8 +59,7 @@ class SideBar extends Component {
 
                         <Modal show={ this.state.show } 
                                onHide={ this.handleModal }
-                               animation={ true } 
-                               centered>
+                               animation={ true } >
                             <Modal.Header closeButton>
                                 <Modal.Title id="contained-modal-title-vcenter">
                                     <h6>Technical Skills</h6>
@@ -70,7 +69,7 @@ class SideBar extends Component {
                                 <span>
                                     <Button 
                                         className="inintoku-skill-button"
-                                        variant="outline-primary">
+                                        variant="outline-dark">
                                         Python
                                     </Button>
                                 </span>

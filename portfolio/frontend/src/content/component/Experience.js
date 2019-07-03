@@ -49,15 +49,15 @@ class Experience extends Component {
                                     </p>
                                     <span className="inintoku-university-description">
                                         <ul>
+                                            <li>
+                                                URL: &nbsp;
+                                                <a href="https://www.procmart.com/">
+                                                    <strong>www.procmart.com</strong>
+                                                </a>
+                                            </li>
                                             <li>Lorem Ipsum</li>
                                         </ul>
                                     </span>
-                                </div>
-                                <div className="inintoku-university-logo">
-                                    <Image src="/static/inintoku/img/procmart-logo.png" 
-                                           className="inintoku-logo-image"
-                                           rounded 
-                                           thumbnail />
                                 </div>
                             </div>
                         </Col>

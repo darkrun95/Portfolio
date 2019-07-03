@@ -52,12 +52,6 @@ class Education extends Component {
                                         </ul>
                                     </span>
                                 </div>
-                                <div className="inintoku-university-logo">
-                                    <Image src="/static/inintoku/img/monash-logo.jpg" 
-                                           className="inintoku-university-image"
-                                           rounded 
-                                           thumbnail />
-                                </div>
                             </div>
                         </Col>
                     </Row>
