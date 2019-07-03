@@ -7,6 +7,8 @@ import EducationContainer from '../../content/container/EducationContainer';
 import ProjectContainer from '../../content/container/ProjectContainer';
 import VolunteerContainer from '../../content/container/VolunteerContainer';
 
+import AuthenticationContainer from '../../admin/container/AuthenticationContainer';
+
 export class Body extends Component {
 	render() {
 		return (
@@ -16,6 +18,8 @@ export class Body extends Component {
                 <Route path="/education" 	component={ EducationContainer }/>
                 <Route path="/projects" 	component={ ProjectContainer }/>
                 <Route path="/volunteering" component={ VolunteerContainer }/>
+
+                <Route path="/manage"       component={ AuthenticationContainer }/>
             </Switch>
 		);
 	}

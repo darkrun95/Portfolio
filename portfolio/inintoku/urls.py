@@ -16,6 +16,7 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls import url
 from django.views.generic.base import RedirectView
 
 favicon_view = RedirectView.as_view(
@@ -26,5 +27,6 @@ urlpatterns = [
     path('favicon.ico', favicon_view),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls', namespace='api')),
+    url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('', include('frontend.urls', namespace='frontend')),
 ]

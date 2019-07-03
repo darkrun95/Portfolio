@@ -16,6 +16,10 @@
     padding-top: 10%;
     color: var(--main-font-color);
 }
+
+.adminContainer {
+    margin-top: -5%;
+}
 /* End Global Styles */
 
 /* Begin Common Styles for all sizes */
@@ -114,12 +118,41 @@ hr {
 .inintoku-skill-button {
     margin-right: 1%;
 }
+
+.inintoku-login-container {
+    margin: 0% 35% 1% 35%;
+    padding: 3%;
+    width: 30%;
+    border: 1px solid rgba(0,0,0,0.14);
+}
+
+.inintoku-login-image-container {
+    text-align: center;
+}
+
+.inintoku-form {
+    margin-top: 6%;
+}
+
 /* End Custom Styling */
 
 /* Begin Responsive Design */
 /* For Screen Sizes 960px and below */
 @media screen and (max-width: 960px) {
+    .inintoku-login-container {
+        margin: 0% 25% 1% 25%;
+        padding: 6%;
+        width: 50%;
+        border: 1px solid rgba(0,0,0,0.14);
+    }
 
+    .inintoku-login-image-container {
+        text-align: center;
+    }
+
+    .inintoku-form {
+        margin-top: 6%;
+    }
 }
 
 /* For Screen Sizes 640px and below */
@@ -137,7 +170,7 @@ hr {
     }
 
     .inintoku-social {
-        width: 15%;
+        width: 20%;
         display: inline-block;
         margin-right: 2%;
     }
@@ -161,6 +194,21 @@ hr {
 
     .inintoku-university-listing {
         padding-left: 5%;
+    }
+
+    .inintoku-login-container {
+        margin: 0% 5% 1% 5%;
+        padding: 10%;
+        width: 90%;
+        border: 1px solid rgba(0,0,0,0.14);
+    }
+
+    .inintoku-login-image-container {
+        text-align: center;
+    }
+
+    .inintoku-form {
+        margin-top: 6%;
     }
 }
 /* End Responsive Design */

@@ -9,4 +9,5 @@ urlpatterns = [
     re_path(r'^education/', 	views.index),
     re_path(r'^projects/', 		views.index),
     re_path(r'^volunteering/', 	views.index),
+    re_path(r'^manage/',		views.index),
 ]
