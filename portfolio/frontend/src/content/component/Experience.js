@@ -42,7 +42,7 @@ class Experience extends Component {
                                 <div className="inintoku-university-listing">
                                     <p className="inintoku-university-name">
                                         <strong>Procmart</strong><br/>
-                                        <span className="inintoku-university-year">(June 2017 - Dec. 2017)</span>
+                                        <span className="inintoku-university-year">( June 2017 - Dec. 2017 )</span>
                                     </p>
                                     <p className="inintoku-university-course">
                                         <span>Junior Full Stack Developer</span>

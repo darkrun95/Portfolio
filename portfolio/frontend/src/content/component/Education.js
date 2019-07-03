@@ -4,7 +4,6 @@ import {
 	Col, 
 	Row, 
 	Image,
-    Link,
     Button 
 } from 'react-bootstrap';
 
@@ -42,7 +41,7 @@ class Education extends Component {
                                 <div className="inintoku-university-listing">
                                     <p className="inintoku-university-name">
                                         <strong>Monash University</strong><br/>
-                                        <span className="inintoku-university-year">(2018-2020)</span>
+                                        <span className="inintoku-university-year">( 2018 - 2020 )</span>
                                     </p>
                                     <p className="inintoku-university-course">
                                         <span>Masters of Data Science</span>

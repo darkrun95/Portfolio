@@ -8,6 +8,5 @@ urlpatterns = [
     re_path(r'^experience/', 	views.index),
     re_path(r'^education/', 	views.index),
     re_path(r'^projects/', 		views.index),
-    re_path(r'^skills/', 		views.index),
     re_path(r'^volunteering/', 	views.index),
 ]

@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
-import { ListGroup, Image, Col } from 'react-bootstrap';
+import { ListGroup, Image, Col, Modal, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 
 class SideBar extends Component {
+    constructor(props) {
+        super(props);
+        this.handleModal = this.handleModal.bind(this);
+
+        this.state = {
+            show: false,
+        };
+    }
+
+    handleModal() {
+        const currentState = this.state.show;
+        this.setState({ 
+            show: !currentState,
+        });
+    }
+
     render() {
         return (
             <div>
@@ -37,15 +53,30 @@ class SideBar extends Component {
                         </ListGroup.Item>
                     </Link>
 
-                    <Link
-                        to = {{
-                            pathname: "/skills",
-                        }} >
-                        <ListGroup.Item>
-                            <Image src="/static/inintoku/img/skills.svg" className="inintoku-sidebar-icon" />
-                            Technical Skills
-                        </ListGroup.Item>
-                    </Link>
+                    <ListGroup.Item onClick={ this.handleModal } >
+                        <Image src="/static/inintoku/img/skills.svg" className="inintoku-sidebar-icon" />
+                        Technical Skills
+
+                        <Modal show={ this.state.show } 
+                               onHide={ this.handleModal }
+                               animation={ true } 
+                               centered>
+                            <Modal.Header closeButton>
+                                <Modal.Title id="contained-modal-title-vcenter">
+                                    <h6>Technical Skills</h6>
+                                </Modal.Title>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <span>
+                                    <Button 
+                                        className="inintoku-skill-button"
+                                        variant="outline-primary">
+                                        Python
+                                    </Button>
+                                </span>
+                            </Modal.Body>
+                        </Modal>
+                    </ListGroup.Item>
 
                     <Link
                         to = {{
@@ -56,7 +87,7 @@ class SideBar extends Component {
                             Volunteering
                         </ListGroup.Item>
                     </Link>
-                </ListGroup>
+                </ListGroup>                        
             </div>
         );
     }
