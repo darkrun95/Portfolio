@@ -6,6 +6,27 @@ import Alert from 'react-bootstrap/Alert';
 class AuthenticationContainer extends Component {
     constructor(props) {
         super(props);
+        const tokenid = localStorage.getItem('tokenid');
+        fetch('/api/check-authenticated/'+tokenid+'/',{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw Error(response.statusText)
+            }
+            return response
+        })
+        .then(response => response.json())
+        .then(json => {
+            props.history.push('/adminportfolio/')
+        })
+        .catch((error) => {
+            props.history.push('/manage')
+        })
+
         this.handleErrors = this.handleErrors.bind(this);
         this.renderRedirect = this.renderRedirect.bind(this);
         this.renderAlert = this.renderAlert.bind(this);
@@ -53,7 +74,7 @@ class AuthenticationContainer extends Component {
     renderRedirect() {
         const { redirect } = this.state;
         if (redirect) {
-            return <Redirect to="/portfolioadmin/" />
+            return <Redirect to="/adminportfolio/" />
         }
     }
 
@@ -112,6 +133,7 @@ class AuthenticationContainer extends Component {
             .then(this.handleErrors)
             .then(response => response.json())
             .then(json => {
+                localStorage.setItem('tokenid', json['access_token'])
                 this.setState({
                     redirect: true,
                 })

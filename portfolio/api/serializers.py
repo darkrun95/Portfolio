@@ -32,14 +32,25 @@ class UserTokenSerializer(serializers.ModelSerializer):
 
     def get_token(self, instance):
         token_url = 'http://localhost:8000/o/token/'
-        request_data = {
-            'client_id': '73T6z658kOeQ4IKe27DGJyhQAdDzr0ptiKF69kLT',
-            'client_secret': 'DX6uUhT72Bur4wNDWHWszoFsf3jqTI2BK9bHHk0OlXr5U10yFz4bOl0wAs89RXyg49cvQx1kT1RCUdfmD4wToQURsE6DMRg8XwCqRQJxjUYawYVqZv9N9lbvH5KHeeSb',
-            'username': instance['username'],
-            'password': instance['password'],
-            'scope': 'write',
-            'grant_type': 'password'
-        }
+
+        if os.environ.get("ENVIRONMENT") == "develop":
+            request_data = {
+                'client_id': '73T6z658kOeQ4IKe27DGJyhQAdDzr0ptiKF69kLT',
+                'client_secret': 'DX6uUhT72Bur4wNDWHWszoFsf3jqTI2BK9bHHk0OlXr5U10yFz4bOl0wAs89RXyg49cvQx1kT1RCUdfmD4wToQURsE6DMRg8XwCqRQJxjUYawYVqZv9N9lbvH5KHeeSb',
+                'username': instance['username'],
+                'password': instance['password'],
+                'scope': 'write',
+                'grant_type': 'password'
+            }
+        else:
+            request_data = {
+                'client_id': 'kC2rHP64JJE7IKOZy0lCBJqyAsnrYEfXUXubBRYc',
+                'client_secret': '9iYnEMjc3Egnb9Pfz9wpizT5sg6E80XPT23D2XlcSPh7XAPOFAS5gPzGtaRQUma3X0kgJ1WCaEuypG59jzoWLW1ISrGkVfnI8W2YNSk0iR1UETKJW1ChVbpfd2MUq0c1',
+                'username': instance['username'],
+                'password': instance['password'],
+                'scope': 'write',
+                'grant_type': 'password'
+            }
 
         request = requests.post(token_url, data=request_data)
         return request.json()

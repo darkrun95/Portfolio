@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import status
 
 from rest_framework import permissions
+from rest_framework.exceptions import NotAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -62,3 +63,13 @@ class TokenAuthorization(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         else:
             return Response(status=status.HTTP_412_PRECONDITION_FAILED)
+
+class CheckAuthentication(APIView):
+    permission_classes = (permissions.AllowAny, )
+
+    def get(self, request, id, format=None):
+        users = User.objects.filter(access_token = id)
+        if users.exists():
+            return Response({'status': 'ok'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'status', 'invalid'}, status=status.HTTP_400_BAD_REQUEST)

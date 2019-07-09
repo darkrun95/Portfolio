@@ -10,5 +10,5 @@ urlpatterns = [
     re_path(r'^projects/', 		 views.index),
     re_path(r'^volunteering/', 	 views.index),
     re_path(r'^manage/',		 views.index),
-    re_path(r'^portfolioadmin/', views.index),
+    re_path(r'^adminportfolio/', views.index),
 ]
