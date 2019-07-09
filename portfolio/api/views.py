@@ -72,4 +72,4 @@ class CheckAuthentication(APIView):
         if users.exists():
             return Response({'status': 'ok'}, status=status.HTTP_200_OK)
         else:
-            return Response({'status', 'invalid'}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({'status': 'invalid'}, status=status.HTTP_400_BAD_REQUEST)

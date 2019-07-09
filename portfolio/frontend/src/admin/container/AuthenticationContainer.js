@@ -7,25 +7,27 @@ class AuthenticationContainer extends Component {
     constructor(props) {
         super(props);
         const tokenid = localStorage.getItem('tokenid');
-        fetch('/api/check-authenticated/'+tokenid+'/',{
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw Error(response.statusText)
-            }
-            return response
-        })
-        .then(response => response.json())
-        .then(json => {
-            props.history.push('/adminportfolio/')
-        })
-        .catch((error) => {
-            props.history.push('/manage')
-        })
+        if (tokenid !== "null") {
+            fetch('/api/check-authenticated/'+tokenid+'/',{
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw Error(response.statusText)
+                }
+                return response
+            })
+            .then(response => response.json())
+            .then(json => {
+                props.history.push('/adminportfolio/')
+            })
+            .catch((error) => {
+                props.history.push('/manage/')
+            })
+        }
 
         this.handleErrors = this.handleErrors.bind(this);
         this.renderRedirect = this.renderRedirect.bind(this);
