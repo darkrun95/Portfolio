@@ -8,18 +8,20 @@ import ProjectContainer from '../../content/container/ProjectContainer';
 import VolunteerContainer from '../../content/container/VolunteerContainer';
 
 import AuthenticationContainer from '../../admin/container/AuthenticationContainer';
+import PortfolioAdminContainer from '../../admin/container/PortfolioAdminContainer';
 
 export class Body extends Component {
 	render() {
 		return (
             <Switch>
-                <Route exact path="/" 		component={ Home } />
-                <Route path="/experience" 	component={ ExperienceContainer }/>
-                <Route path="/education" 	component={ EducationContainer }/>
-                <Route path="/projects" 	component={ ProjectContainer }/>
-                <Route path="/volunteering" component={ VolunteerContainer }/>
+                <Route exact path="/" 		    component={ Home } />
+                <Route path="/experience" 	    component={ ExperienceContainer }/>
+                <Route path="/education" 	    component={ EducationContainer }/>
+                <Route path="/projects" 	    component={ ProjectContainer }/>
+                <Route path="/volunteering"     component={ VolunteerContainer }/>
 
-                <Route path="/manage"       component={ AuthenticationContainer }/>
+                <Route path="/manage"           component={ AuthenticationContainer }/>
+                <Route path="/portfolioadmin"   component={ PortfolioAdminContainer } />
             </Switch>
 		);
 	}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Form, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import CSRFToken from './CSRFToken';
 
 class Authentication extends Component {
     constructor(props) {
@@ -19,12 +18,8 @@ class Authentication extends Component {
     submitForm() {
         event.preventDefault();
         const { handleAuthenticationCallback } = this.props;
-        this.setState({
-            csrftoken: event.target.children[0].value,
-        }, () => {
-            const data = this.state;
-            handleAuthenticationCallback(data);
-        })
+        const data = this.state;
+        handleAuthenticationCallback(data);
     }
 
     handleChange() {
@@ -41,11 +36,14 @@ class Authentication extends Component {
 		return (
             <div className="inintoku-login-container container">
                 <div className="inintoku-login-image-container">
-                    <Image className="inintoku-login-image" src="/static/inintoku/img/login.jpg" fluid />
+                    <Image className="inintoku-login-image" 
+                           src="/static/inintoku/img/login.jpg" 
+                           fluid
+                           roundedCircle
+                           thumbnail />
                 </div>
 
                 <Form method="POST" onSubmit={ this.submitForm }>
-                    <CSRFToken />
                     {
                         form_fields.map((field, key) => {
                             return (
@@ -63,7 +61,7 @@ class Authentication extends Component {
                     }
                     <Button
                         type="submit"
-                        variant="outline-info" >
+                        variant="outline-dark" >
                         Login
                     </Button>
                 </Form>

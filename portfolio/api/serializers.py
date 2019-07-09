@@ -1,8 +1,18 @@
 from rest_framework import serializers
-
 from django.contrib.auth import get_user_model
+import requests
+from django.utils.timezone import now
 
 class UserSerializer(serializers.ModelSerializer):
+    def update(self, instance, validated_data):
+        instance.access_token = validated_data['access_token']
+        instance.refresh_token = validated_data['refresh_token']
+        instance.expires_in = validated_data['expires_in']
+        instance.token_type = validated_data['token_type']
+        instance.last_login = now()
+        instance.save()
+        return instance
+
     class Meta:
         model = get_user_model()
         fields = [
@@ -11,4 +21,32 @@ class UserSerializer(serializers.ModelSerializer):
             'first_name',
             'last_name',
             'email',
+            'access_token',
+            'expires_in',
+            'token_type',
+            'refresh_token',
+        ]
+
+class UserTokenSerializer(serializers.ModelSerializer):
+    token = serializers.SerializerMethodField()
+
+    def get_token(self, instance):
+        token_url = 'http://localhost:8000/o/token/'
+        request_data = {
+            'client_id': '73T6z658kOeQ4IKe27DGJyhQAdDzr0ptiKF69kLT',
+            'client_secret': 'DX6uUhT72Bur4wNDWHWszoFsf3jqTI2BK9bHHk0OlXr5U10yFz4bOl0wAs89RXyg49cvQx1kT1RCUdfmD4wToQURsE6DMRg8XwCqRQJxjUYawYVqZv9N9lbvH5KHeeSb',
+            'username': instance['username'],
+            'password': instance['password'],
+            'scope': 'write',
+            'grant_type': 'password'
+        }
+
+        request = requests.post(token_url, data=request_data)
+        return request.json()
+
+    class Meta:
+        model = get_user_model()
+        fields = [
+            'username',
+            'token'
         ]

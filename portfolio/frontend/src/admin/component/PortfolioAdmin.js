@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Container } from 'react-bootstrap';
 
-class Admin extends Component {
+class PortfolioAdmin extends Component {
 	render() {
 		return (
             <div>
@@ -13,4 +13,4 @@ class Admin extends Component {
 	}
 }
 
-export default Admin;
+export default PortfolioAdmin;
