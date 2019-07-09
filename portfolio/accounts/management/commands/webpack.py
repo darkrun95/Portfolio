@@ -5,7 +5,7 @@ class Command(BaseCommand):
     def add_arguments(self, parser):
         parser.add_argument('branch', nargs='+', type=str)
         parser.add_argument('message', nargs='+', type=str)
-        parser.add_argument('deploy', nargs='+', type=bool)
+        parser.add_argument('deploy', nargs='+', type=str)
 
     def handle(self, *args, **kwargs):
         os.system("rm -rf static/frontend/bundles/prod/*")
@@ -19,7 +19,7 @@ class Command(BaseCommand):
         print("Pushed to git on branch {}".format(kwargs['branch'][0]))
         print()
 
-        if kwargs['deploy'][0] == True:
+        if kwargs['deploy'][0] == "True":
             os.system("eb deploy Arunpottekat-env --profile arunpottekat")
             print("Production deployment complete")
         else:
