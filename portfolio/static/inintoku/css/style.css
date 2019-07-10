@@ -73,6 +73,7 @@ a{
 
 .inintoku-education-item, .inintoku-list-item {
     width: 100%;
+    margin-bottom: 2%;
 }
 
 .inintoku-icon-section {
@@ -141,10 +142,17 @@ hr {
 
 .inintoku-admin-card {
     margin: 2%;
+    width: 100%;
 }
 
 .inintoku-vertical-space {
     margin: 2%;
+}
+
+.inintoku-vertical-center {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
 }
 
 /* End Custom Styling */

@@ -1,33 +1,21 @@
 import React, { Component } from 'react';
 import PortfolioAdmin from '../component/PortfolioAdmin'
+import { check_authentication } from '../../utils/utils.js'
 
 class PortfolioAdminContainer extends Component {
 	constructor(props) {
 		super(props);
-		const acs_token = localStorage.getItem('acs_token');
-
-		if (acs_token !== null) {	
-			fetch('/api/check-authenticated/'+acs_token+'/',{
-				method: 'GET',
-				headers: {
-	                'Content-Type': 'application/json'
-	            },
-			})
-			.then(response => {
-				if (!response.ok) {
-					throw Error(response.statusText)
-				}
-				return response
-			})
-			.catch((error) => {
-				props.history.push('/manage')
-			})
-		} else {
-			props.history.push('/manage')
-		}
 
 		this.handleButton = this.handleButton.bind(this);
 	}
+
+	componentDidMount() {
+        check_authentication().then(response => {
+            if (!response) {
+                this.props.history.push('/manage/')    
+            }
+        })
+    }
 
 	handleButton() {
 		this.props.history.push('/logout')

@@ -7,11 +7,23 @@ import {
     Link,
     Button 
 } from 'react-bootstrap';
+import { _ } from 'underscore';
 
 class Experience extends Component {
     constructor(props) {
         super(props);
         this.handlePushBack = this.handlePushBack.bind(this);
+        this.state = {
+            experience_list: props.experience_list,
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!_.isEqual(prevProps, this.props)){
+            this.setState({
+                experience_list: this.props.experience_list,
+            })
+        }
     }
 
     handlePushBack() {
@@ -20,6 +32,8 @@ class Experience extends Component {
     }
 
     render() {
+        const { experience_list } = this.state;
+
         return (
             <div>
                 <Container>
@@ -35,31 +49,37 @@ class Experience extends Component {
                     <Row className="inintoku-education-row">
                         <Col lg={1} md={1} sm={1} xs={1}></Col>
                         <Col lg={10} md={10} sm={10} xs={10}>
-                            <div className="inintoku-list-item">
-                                <div className="inintoku-icon-section">
-                                    <hr />
-                                </div>
-                                <div className="inintoku-university-listing">
-                                    <p className="inintoku-university-name">
-                                        <strong>Procmart</strong><br/>
-                                        <span className="inintoku-university-year">( June 2017 - Dec. 2017 )</span>
-                                    </p>
-                                    <p className="inintoku-university-course">
-                                        <span>Junior Full Stack Developer</span>
-                                    </p>
-                                    <span className="inintoku-university-description">
-                                        <ul>
-                                            <li>
-                                                URL: &nbsp;
-                                                <a href="https://www.procmart.com/">
-                                                    <strong>www.procmart.com</strong>
-                                                </a>
-                                            </li>
-                                            <li>Lorem Ipsum</li>
-                                        </ul>
-                                    </span>
-                                </div>
-                            </div>
+                            {
+                                experience_list.map((item, index) => {
+                                    return (
+                                        <div className="inintoku-list-item" key={`${index}`}>
+                                            <div className="inintoku-icon-section">
+                                                <hr />
+                                            </div>
+                                            <div className="inintoku-university-listing">
+                                                <p className="inintoku-university-name">
+                                                    <strong>{ item.company_name }</strong><br/>
+                                                    <span className="inintoku-university-year">( { item.duration } )</span>
+                                                </p>
+                                                <p className="inintoku-university-course">
+                                                    <span>{ item.role }</span>
+                                                </p>
+                                                <span className="inintoku-university-description">
+                                                    <ul>
+                                                        <li>
+                                                            URL: &nbsp;
+                                                            <a href="{ item.url }">
+                                                                <strong>{ item.display_url }</strong>
+                                                            </a>
+                                                        </li>
+                                                        <li>{ item.description }</li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    )
+                                })    
+                            }
                         </Col>
                     </Row>
                 </Container>

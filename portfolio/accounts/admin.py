@@ -32,4 +32,14 @@ class CustomUserAdmin(UserAdmin):
         "email",
     )
 
+class ExperienceAdmin(admin.ModelAdmin):
+    list_display = (
+        "company_name",
+        "role",
+        "duration",
+    )
+
+    search_fields = ("company_name", )
+
+admin.site.register(Experience, ExperienceAdmin)
 admin.site.register(User, CustomUserAdmin)

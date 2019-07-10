@@ -8,6 +8,7 @@ import {
     Image,
     Col
 } from 'react-bootstrap';
+import ExperienceAdminContainer from '../container/ExperienceAdminContainer.js';
 
 class PortfolioAdmin extends Component {
     constructor(props) {
@@ -49,70 +50,7 @@ class PortfolioAdmin extends Component {
                             </Nav>
                         </Card.Header>
                         <Card.Body>
-                            <Row>
-                                <Col lg={4} md={6} sm={12} xs={12}>
-                                    <Card className="inintoku-admin-card">
-                                        <Card.Header>
-                                            <Image className="inintoku-card-image" 
-                                               src="/static/inintoku/img/login.jpg" 
-                                               fluid
-                                               rounded
-                                               thumbnail />
-                                        </Card.Header>
-                                        <Card.Body>
-                                            <Card.Title>Card Title</Card.Title>
-                                            <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk of
-                                                the card's content.
-                                            </Card.Text>
-                                            <Button variant="outline-dark">Edit</Button> &nbsp;
-                                            <Button variant="outline-danger">Delete</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-
-                                <Col lg={4} md={6} sm={12} xs={12}>
-                                    <Card className="inintoku-admin-card">
-                                        <Card.Header>
-                                            <Image className="inintoku-card-image" 
-                                               src="/static/inintoku/img/login.jpg" 
-                                               fluid
-                                               rounded
-                                               thumbnail />
-                                        </Card.Header>
-                                        <Card.Body>
-                                            <Card.Title>Card Title</Card.Title>
-                                            <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk of
-                                                the card's content.
-                                            </Card.Text>
-                                            <Button variant="outline-dark">Edit</Button> &nbsp;
-                                            <Button variant="outline-danger">Delete</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-
-                                <Col lg={4} md={6} sm={12} xs={12}>
-                                    <Card className="inintoku-admin-card">
-                                        <Card.Header>
-                                            <Image className="inintoku-card-image" 
-                                               src="/static/inintoku/img/login.jpg" 
-                                               fluid
-                                               rounded
-                                               thumbnail />
-                                        </Card.Header>
-                                        <Card.Body>
-                                            <Card.Title>Card Title</Card.Title>
-                                            <Card.Text>
-                                                Some quick example text to build on the card title and make up the bulk of
-                                                the card's content.
-                                            </Card.Text>
-                                            <Button variant="outline-dark">Edit</Button> &nbsp;
-                                            <Button variant="outline-danger">Delete</Button>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            </Row>
+                            <ExperienceAdminContainer />
                         </Card.Body>
                     </Card>
                 </Container>

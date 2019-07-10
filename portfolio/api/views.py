@@ -8,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from . import serializers
+from accounts.models import *
 
 User = get_user_model()
 
@@ -73,3 +74,13 @@ class CheckAuthentication(APIView):
             return Response({'status': 'ok'}, status=status.HTTP_200_OK)
         else:
             return Response({'status': 'invalid'}, status=status.HTTP_400_BAD_REQUEST)
+
+class ExperienceList(APIView):
+    permission_classes = (permissions.AllowAny, )
+    
+    def get(self, request, format=None):
+        experience_list = Experience.objects.all()
+        if experience_list.exists():
+            serializer = serializers.ExperienceSerializer(experience_list, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)

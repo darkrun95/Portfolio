@@ -2,32 +2,11 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import Authentication from '../component/Authentication';
 import Alert from 'react-bootstrap/Alert';
+import { check_authentication } from '../../utils/utils.js';
 
 class AuthenticationContainer extends Component {
     constructor(props) {
         super(props);
-        const acs_token = localStorage.getItem('acs_token');
-        if (acs_token !== null) {
-            fetch('/api/check-authenticated/'+acs_token+'/',{
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw Error(response.statusText)
-                }
-                return response
-            })
-            .then(response => response.json())
-            .then(json => {
-                props.history.push('/adminportfolio/')
-            })
-            .catch((error) => {
-                props.history.push('/manage/')
-            })
-        }
 
         this.handleErrors = this.handleErrors.bind(this);
         this.renderRedirect = this.renderRedirect.bind(this);
@@ -59,6 +38,16 @@ class AuthenticationContainer extends Component {
             alert_variant: "info",
             form_fields: form_fields,
         }
+    }
+
+    componentDidMount() {
+        check_authentication().then(response => {
+            if (response) {
+                this.props.history.push('/adminportfolio/')    
+            } else {
+                this.props.history.push('/manage/')    
+            }
+        })
     }
 
     handleErrors(response) {

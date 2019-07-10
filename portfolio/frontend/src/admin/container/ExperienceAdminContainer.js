@@ -1,20 +1,15 @@
 import React, { Component } from 'react';
-import Experience from '../component/Experience.js';
+import ExperienceAdmin from '../component/ExperienceAdmin.js';
 
-class ExperienceContainer extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {
+class ExperienceAdminContainer extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             experience_list: [],
         }
-		this.handleButton = this.handleButton.bind(this);
-		this.handleErrors = this.handleErrors.bind(this);
-	}
 
-	handleButton() {
-		this.props.history.push('/')
-	}
+        this.handleErrors = this.handleErrors.bind(this);
+    }
 
     handleErrors(response) {
         if (!response.ok) {
@@ -30,7 +25,7 @@ class ExperienceContainer extends Component {
         fetch('/api/experience-list/', {
             method: 'GET',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
         })
         .then(this.handleErrors)
@@ -49,16 +44,12 @@ class ExperienceContainer extends Component {
     }
 
     render() {
-    	const { experience_list } = this.state;
-    	
+        const { experience_list } = this.state;
         return (
-            <div>
-                <Experience 
-                	handleButtonCallback={ this.handleButton } 
-                	experience_list={ experience_list } />
-            </div>
-        );
+            <ExperienceAdmin 
+                experience_list={ experience_list } />
+        )
     }
 }
 
-export default ExperienceContainer;
+export default ExperienceAdminContainer;

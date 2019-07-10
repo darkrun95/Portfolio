@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 import requests
 import os
 from django.utils.timezone import now
+from accounts.models import *
 
 class UserSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
@@ -62,3 +63,8 @@ class UserTokenSerializer(serializers.ModelSerializer):
             'username',
             'token'
         ]
+
+class ExperienceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Experience
+        fields = '__all__'
