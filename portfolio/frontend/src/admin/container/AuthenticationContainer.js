@@ -6,9 +6,9 @@ import Alert from 'react-bootstrap/Alert';
 class AuthenticationContainer extends Component {
     constructor(props) {
         super(props);
-        const tokenid = localStorage.getItem('tokenid');
-        if (tokenid !== "null") {
-            fetch('/api/check-authenticated/'+tokenid+'/',{
+        const acs_token = localStorage.getItem('acs_token');
+        if (acs_token !== null) {
+            fetch('/api/check-authenticated/'+acs_token+'/',{
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -135,7 +135,7 @@ class AuthenticationContainer extends Component {
             .then(this.handleErrors)
             .then(response => response.json())
             .then(json => {
-                localStorage.setItem('tokenid', json['access_token'])
+                localStorage.setItem('acs_token', json['access_token'])
                 this.setState({
                     redirect: true,
                 })

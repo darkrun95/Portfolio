@@ -9,6 +9,7 @@ import VolunteerContainer from '../../content/container/VolunteerContainer';
 
 import AuthenticationContainer from '../../admin/container/AuthenticationContainer';
 import PortfolioAdminContainer from '../../admin/container/PortfolioAdminContainer';
+import LogOutContainer from '../../admin/container/LogOutContainer';
 
 export class Body extends Component {
 	render() {
@@ -22,6 +23,8 @@ export class Body extends Component {
 
                 <Route path="/manage"           component={ AuthenticationContainer }/>
                 <Route path="/adminportfolio"   component={ PortfolioAdminContainer } />
+
+                <Route path="/logout"           component={ LogOutContainer } />
             </Switch>
 		);
 	}

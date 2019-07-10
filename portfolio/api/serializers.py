@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 import requests
+import os
 from django.utils.timezone import now
 
 class UserSerializer(serializers.ModelSerializer):

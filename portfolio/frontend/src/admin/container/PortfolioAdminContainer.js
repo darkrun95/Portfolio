@@ -4,10 +4,10 @@ import PortfolioAdmin from '../component/PortfolioAdmin'
 class PortfolioAdminContainer extends Component {
 	constructor(props) {
 		super(props);
-		const tokenid = localStorage.getItem('tokenid');
+		const acs_token = localStorage.getItem('acs_token');
 
-		if (tokenid !== "null") {	
-			fetch('/api/check-authenticated/'+tokenid+'/',{
+		if (acs_token !== null) {	
+			fetch('/api/check-authenticated/'+acs_token+'/',{
 				method: 'GET',
 				headers: {
 	                'Content-Type': 'application/json'
@@ -25,12 +25,18 @@ class PortfolioAdminContainer extends Component {
 		} else {
 			props.history.push('/manage')
 		}
+
+		this.handleButton = this.handleButton.bind(this);
+	}
+
+	handleButton() {
+		this.props.history.push('/logout')
 	}
 
     render() {
         return (
         	<div className="adminContainer">
-	            <PortfolioAdmin />
+	            <PortfolioAdmin handleButtonCallback={ this.handleButton } />
             </div>
         )
     }

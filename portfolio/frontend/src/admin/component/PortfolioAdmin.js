@@ -10,10 +10,24 @@ import {
 } from 'react-bootstrap';
 
 class PortfolioAdmin extends Component {
+    constructor(props) {
+        super(props);
+        this.handleLogOut = this.handleLogOut.bind(this);
+    }
+
+    handleLogOut() {
+        const { handleButtonCallback } = this.props;
+        handleButtonCallback();
+    }
+
     render() {
         return (
             <div>
                 <Container>
+                    <Button 
+                        variant="outline-danger"
+                        onClick={ this.handleLogOut }>Log Out</Button>
+                    <div className="inintoku-vertical-space"></div>
                     <Card>
                         <Card.Header>
                             <Nav variant="tabs" defaultActiveKey="#experience">
