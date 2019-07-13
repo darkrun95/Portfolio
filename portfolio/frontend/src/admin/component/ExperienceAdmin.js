@@ -32,25 +32,15 @@ class ExperienceAdmin extends Component {
                         experience_list.map((item, index) => {
                             return (
                                 <Col lg={4} md={6} sm={12} xs={12} key={`${index}`}>
-                                    <Card className="inintoku-admin-card">
-                                        <Card.Header>
-                                            <Card.Title>{ item.company_name }</Card.Title>
-                                        </Card.Header>
+                                    <Card>
                                         <Card.Body>
-                                            <Card.Text>
-                                                <strong>{ item.role }</strong>
-                                            </Card.Text>
-                                            <Card.Text>
-                                                { item.duration }
-                                            </Card.Text>
-                                            <Card.Text>
-                                                <strong>{ item.url }</strong>
-                                            </Card.Text>
-                                            <Card.Text>
-                                                { item.description }
-                                            </Card.Text>
-                                            <Button variant="outline-dark">Edit</Button> &nbsp;
-                                            <Button variant="outline-danger">Delete</Button>
+                                            <Card.Subtitle className="mb-2">
+                                                { item.company_name }<br/> <small>{ item.role }</small>
+                                            </Card.Subtitle>
+                                            <Button 
+                                                variant="outline-warning">Edit</Button> &nbsp;
+                                            <Button 
+                                                variant="outline-danger">Delete</Button>
                                         </Card.Body>
                                     </Card>
                                 </Col>
@@ -61,7 +51,7 @@ class ExperienceAdmin extends Component {
                         <Card>
                             <Card.Body>
                                 <Card.Text>
-                                    <Button variant="outline-success">Add</Button>
+                                    <Button variant="outline-success"><span>&#43;</span> Add</Button>
                                 </Card.Text>
                             </Card.Body>
                         </Card>

@@ -25,6 +25,10 @@
     margin-top: -10%;
     margin-bottom: 10%;
 }
+
+.no-style {
+    margin-top: -10%;
+}
 /* End Global Styles */
 
 /* Begin Common Styles for all sizes */
@@ -37,6 +41,10 @@ input:-webkit-autofill:active  {
 
 .inintoku-center {
     text-align: center;
+}
+
+.inintoku-block {
+    display: block;
 }
 
 .inintoku-color-green {
@@ -54,6 +62,11 @@ input:-webkit-autofill:active  {
 a{
     text-decoration: none !important;
     color: var(--main-font-color);
+}
+
+.btn {
+    font-size: 14px;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
 }
 
 .inintoku-social {
@@ -130,6 +143,8 @@ hr {
     padding: 3%;
     width: 20%;
     border: 1px solid rgba(0,0,0,0.14);
+    border-radius: 2%;
+    box-shadow: 5px 5px rgba(0,0,0,0.2);
 }
 
 .inintoku-login-image-container {
@@ -155,6 +170,67 @@ hr {
     align-items: center; 
 }
 
+/*
+--------------------------------
+Admin Page Styling
+--------------------------------
+*/
+.inintoku-admin-sidebar {
+    height: 100%;
+    padding: 10% 2.5% 10% 2.5%;
+}
+
+.inintoku-sidebar-image-container{
+    text-align: center;
+    height: 20%;
+}
+
+.inintoku-admin-sidebar-container {
+    height: 100vh;
+    padding-right: 0px;
+}
+
+.inintoku-sidebar-image {
+    width: 50%;
+}
+
+.inintoku-admin-sidebar-options {
+    margin-top: 10%;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+}
+
+.inintoku-admin-sidebar-footer {
+    margin-top: 10%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+button.close {
+    display: none;
+}
+
+.inintoku-admin-header {
+    height: 10%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+.inintoku-admin-body {
+    height: 90%;
+    padding: 5%;
+}
+
+.inintoku-admin-dashboard {
+    height: 100vh;
+    padding-left: 0px;
+}
+
+
 /* End Custom Styling */
 
 /* Begin Responsive Design */
@@ -165,6 +241,7 @@ hr {
         padding: 6%;
         width: 40%;
         border: 1px solid rgba(0,0,0,0.14);
+        box-shadow: 5px 5px rgba(0,0,0,0.2);
     }
 
     .inintoku-login-image-container {
@@ -222,6 +299,7 @@ hr {
         padding: 10%;
         width: 70%;
         border: 1px solid rgba(0,0,0,0.14);
+        box-shadow: 5px 5px rgba(0,0,0,0.2);
     }
 
     .inintoku-login-image-container {

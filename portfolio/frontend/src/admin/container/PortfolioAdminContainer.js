@@ -5,8 +5,6 @@ import { check_authentication } from '../../utils/utils.js'
 class PortfolioAdminContainer extends Component {
 	constructor(props) {
 		super(props);
-
-		this.handleButton = this.handleButton.bind(this);
 	}
 
 	componentDidMount() {
@@ -17,14 +15,10 @@ class PortfolioAdminContainer extends Component {
         })
     }
 
-	handleButton() {
-		this.props.history.push('/logout')
-	}
-
     render() {
         return (
         	<div className="adminContainer">
-	            <PortfolioAdmin handleButtonCallback={ this.handleButton } />
+	            <PortfolioAdmin />
             </div>
         )
     }
