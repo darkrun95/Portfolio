@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ExperienceAdmin from '../component/ExperienceAdmin.js';
+import ProfileAdmin from '../component/ProfileAdmin.js';
 
-class ExperienceAdminContainer extends Component {
+class ProfileAdminContainer extends Component {
     constructor(props) {
         super(props);
         this.is_cancelled = false
@@ -24,7 +24,7 @@ class ExperienceAdminContainer extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/experience-list/', {
+        /*fetch('/api/experience-list/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -41,16 +41,16 @@ class ExperienceAdminContainer extends Component {
         })
         .catch((error) => {
             console.error("Something went wrong.")
-        });
+        });*/
     }
 
     render() {
         const { experience_list } = this.state;
         return (
-            <ExperienceAdmin 
+            <ProfileAdmin 
                 experience_list={ experience_list } />
         )
     }
 }
 
-export default ExperienceAdminContainer;
+export default ProfileAdminContainer;

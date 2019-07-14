@@ -8,6 +8,6 @@ const supportsHistory = 'pushState' in window.history;
 ReactDOM.render(
         (
             <BrowserRouter forceRefresh={ !supportsHistory }>
-                    <Base />
+                <Base />
             </BrowserRouter>
         ), document.getElementById('app'));

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ExperienceAdmin from '../component/ExperienceAdmin.js';
+import SkillAdmin from '../component/SkillAdmin.js';
 
-class ExperienceAdminContainer extends Component {
+class SkillAdminContainer extends Component {
     constructor(props) {
         super(props);
         this.is_cancelled = false
@@ -47,10 +47,10 @@ class ExperienceAdminContainer extends Component {
     render() {
         const { experience_list } = this.state;
         return (
-            <ExperienceAdmin 
+            <SkillAdmin 
                 experience_list={ experience_list } />
         )
     }
 }
 
-export default ExperienceAdminContainer;
+export default SkillAdminContainer;

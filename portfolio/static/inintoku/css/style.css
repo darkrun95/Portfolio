@@ -161,7 +161,8 @@ hr {
 }
 
 .inintoku-vertical-space {
-    margin: 2%;
+    margin-top: 1%;
+    margin-bottom: 1%;
 }
 
 .inintoku-vertical-center {
@@ -178,11 +179,11 @@ Admin Page Styling
 .inintoku-admin-sidebar {
     height: 100%;
     padding: 10% 2.5% 10% 2.5%;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
 }
 
 .inintoku-sidebar-image-container{
     text-align: center;
-    height: 20%;
 }
 
 .inintoku-admin-sidebar-container {
@@ -192,11 +193,12 @@ Admin Page Styling
 
 .inintoku-sidebar-image {
     width: 50%;
+    margin-bottom: 5%;
 }
 
 .inintoku-admin-sidebar-options {
     margin-top: 10%;
-    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+    height: 60%;
 }
 
 .inintoku-admin-sidebar-footer {
@@ -207,11 +209,16 @@ Admin Page Styling
     align-items: center; 
 }
 
+.selected {
+    background-color: var(--main-blue)
+}
+
 button.close {
     display: none;
 }
 
 .inintoku-admin-header {
+    width: 98%;
     height: 10%;
     display: flex;
     justify-content: flex-end;
@@ -221,6 +228,7 @@ button.close {
 }
 
 .inintoku-admin-body {
+    width: 90%;
     height: 90%;
     padding: 5%;
 }
