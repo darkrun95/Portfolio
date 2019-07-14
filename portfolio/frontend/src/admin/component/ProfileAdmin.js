@@ -7,9 +7,16 @@ import { _ } from 'underscore';
 class ProfileAdmin extends Component {
     constructor(props) {
         super(props);
+        this.initiateFormUpdate = this.initiateFormUpdate.bind(this);
+
         this.state = {
             profile: props.profile,
         }
+    }
+
+    initiateFormUpdate() {
+        const { initiateFormUpdateCallback } = this.props;
+        initiateFormUpdateCallback();
     }
 
     componentDidUpdate(prevProps) {
@@ -84,6 +91,7 @@ class ProfileAdmin extends Component {
                     <Form.Group as={Row}>
                         <Col sm={{ span: 10 }}>
                             <Button 
+                                onClick={ this.initiateFormUpdate }
                                 variant="outline-warning">Update Details</Button>
                         </Col>
                     </Form.Group>

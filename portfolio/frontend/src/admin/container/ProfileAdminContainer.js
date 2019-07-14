@@ -10,6 +10,7 @@ class ProfileAdminContainer extends Component {
         }
 
         this.handleErrors = this.handleErrors.bind(this);
+        this.initiateFormUpdate = this.initiateFormUpdate.bind(this);
     }
 
     handleErrors(response) {
@@ -17,6 +18,10 @@ class ProfileAdminContainer extends Component {
             throw Error(response.statusText)
         }
         return response
+    }
+
+    initiateFormUpdate() {
+        console.log("Initiating Update")
     }
 
     componentWillUnmount() {
@@ -48,6 +53,7 @@ class ProfileAdminContainer extends Component {
         const { profile } = this.state;
         return (
             <ProfileAdmin 
+                initiateFormUpdateCallback={ this.initiateFormUpdate }
                 profile={ profile } />
         )
     }

@@ -10,6 +10,13 @@
     --secondary-red: #ff3232;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    width: 100%;
+}
+
 #app {
     font-size: 15px;
     height: 100vh;
@@ -76,6 +83,11 @@ a{
 }
 
 .inintoku-sidebar-icon {
+    width: 8%;
+    margin-right: 4%;
+}
+
+.inintoku-admin-sidebar-icon {
     width: 8%;
     margin-right: 4%;
 }
@@ -305,6 +317,11 @@ button.close {
         margin-right: 5%;
     }
 
+    .inintoku-admin-sidebar-icon {
+        width: 15%;
+        margin-right: 5%;
+    }
+
     .inintoku-education-row {
         margin-bottom: 5%;
     }
@@ -346,7 +363,7 @@ button.close {
         width: 80%;
     }
 
-    .inintoku-sidebar-icon {
+    .inintoku-admin-sidebar-icon {
         width: 120%;
     }
 
@@ -364,7 +381,7 @@ button.close {
 }
 
 @media screen and (max-width: 375px) {
-    .inintoku-sidebar-icon {
+    .inintoku-admin-sidebar-icon {
         width: 180%;
     }
 }

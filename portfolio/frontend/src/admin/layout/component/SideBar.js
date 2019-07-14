@@ -46,32 +46,32 @@ class SideBar extends Component {
                 <div className="inintoku-admin-sidebar-options">
                 	<ListGroup>
                 		<ListGroup.Item className="profile" onClick={ this.clickEvent }>
-                            <Image src="/static/inintoku/img/profile.svg" className="inintoku-sidebar-icon" />
+                            <Image src="/static/inintoku/img/profile.svg" className="inintoku-admin-sidebar-icon" />
                             <span className="inintoku-hidden">Profile</span>
                         </ListGroup.Item>
 
 	                    <ListGroup.Item className="experience" onClick={ this.clickEvent }>
-                            <Image src="/static/inintoku/img/work.svg" className="inintoku-sidebar-icon" />
+                            <Image src="/static/inintoku/img/work.svg" className="inintoku-admin-sidebar-icon" />
                             <span className="inintoku-hidden">Experience</span>
                         </ListGroup.Item>
 	                    
 	                    <ListGroup.Item className="qualifications" onClick={ this.clickEvent }>
-                            <Image src="/static/inintoku/img/college.svg" className="inintoku-sidebar-icon" />
+                            <Image src="/static/inintoku/img/college.svg" className="inintoku-admin-sidebar-icon" />
                             <span className="inintoku-hidden">Qualifications</span>
                         </ListGroup.Item>
 	                    	                    
 	                    <ListGroup.Item className="projects" onClick={ this.clickEvent }>
-                            <Image src="/static/inintoku/img/project.svg" className="inintoku-sidebar-icon" />
+                            <Image src="/static/inintoku/img/project.svg" className="inintoku-admin-sidebar-icon" />
                             <span className="inintoku-hidden">Projects</span>
                         </ListGroup.Item>
 	                    
 	                    <ListGroup.Item className="skills" onClick={ this.clickEvent }>
-	                        <Image src="/static/inintoku/img/skills.svg" className="inintoku-sidebar-icon" />
+	                        <Image src="/static/inintoku/img/skills.svg" className="inintoku-admin-sidebar-icon" />
 	                        <span className="inintoku-hidden">Technical Skills</span>
 	                    </ListGroup.Item>
 
 	                    <ListGroup.Item className="volunteering" onClick={ this.clickEvent }>
-                            <Image src="/static/inintoku/img/activities.svg" className="inintoku-sidebar-icon" />
+                            <Image src="/static/inintoku/img/activities.svg" className="inintoku-admin-sidebar-icon" />
                             <span className="inintoku-hidden">Volunteering</span>
 	                    </ListGroup.Item>
 					</ListGroup>      
