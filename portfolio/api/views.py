@@ -18,11 +18,12 @@ class UserView(APIView):
     def get(self, request, format=None):
         user = User.objects.get(username='arun')
         data = {
-            'id': user.id,
-            'username': user.username,
+            'email': user.email,
             'first_name': user.first_name,
             'last_name': user.last_name,
-            'email': user.email,
+            'description': user.description,
+            'github_link': user.github_link,
+            'linkedin_link': user.linkedin_link,
         }
         serializer = serializers.UserSerializer(data)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -44,7 +45,7 @@ class UserLogin(APIView):
             'refresh_token': request.data['refresh_token'],
         }
 
-        serializer = serializers.UserSerializer(instance = user, data = data)
+        serializer = serializers.UserUpdateSerializer(instance = user, data = data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -82,5 +83,45 @@ class ExperienceList(APIView):
         experience_list = Experience.objects.all()
         if experience_list.exists():
             serializer = serializers.ExperienceSerializer(experience_list, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+class EducationList(APIView):
+    permission_classes = (permissions.AllowAny, )
+    
+    def get(self, request, format=None):
+        education_list = Education.objects.all()
+        if education_list.exists():
+            serializer = serializers.EducationSerializer(education_list, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+class ProjectList(APIView):
+    permission_classes = (permissions.AllowAny, )
+    
+    def get(self, request, format=None):
+        project_list = Project.objects.all()
+        if project_list.exists():
+            serializer = serializers.ProjectSerializer(project_list, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+class SkillList(APIView):
+    permission_classes = (permissions.AllowAny, )
+    
+    def get(self, request, format=None):
+        skill_list = Skill.objects.all()
+        if skill_list.exists():
+            serializer = serializers.SkillSerializer(skill_list, many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+class VolunteerList(APIView):
+    permission_classes = (permissions.AllowAny, )
+    
+    def get(self, request, format=None):
+        volunteer_list = Volunteer.objects.all()
+        if volunteer_list.exists():
+            serializer = serializers.VolunteerSerializer(volunteer_list, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)

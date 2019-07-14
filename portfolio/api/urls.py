@@ -12,6 +12,10 @@ urlpatterns = [
 
     path('users/',      		views.UserView.as_view()),
     path('experience-list/', 	views.ExperienceList.as_view()),
+    path('education-list/', 	views.EducationList.as_view()),
+    path('project-list/', 		views.ProjectList.as_view()),
+    path('skill-list/', 		views.SkillList.as_view()),
+    path('volunteer-list/', 	views.VolunteerList.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

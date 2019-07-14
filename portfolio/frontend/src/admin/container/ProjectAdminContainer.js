@@ -6,7 +6,7 @@ class ProjectAdminContainer extends Component {
         super(props);
         this.is_cancelled = false
         this.state = {
-            experience_list: [],
+            project_list: [],
         }
 
         this.handleErrors = this.handleErrors.bind(this);
@@ -24,7 +24,7 @@ class ProjectAdminContainer extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/experience-list/', {
+        fetch('/api/project-list/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ class ProjectAdminContainer extends Component {
         .then(json => {
             if (json && !this.is_cancelled) {
                 this.setState({
-                    experience_list: json,
+                    project_list: json,
                 })
             }
         })
@@ -45,10 +45,10 @@ class ProjectAdminContainer extends Component {
     }
 
     render() {
-        const { experience_list } = this.state;
+        const { project_list } = this.state;
         return (
             <ProjectAdmin 
-                experience_list={ experience_list } />
+                project_list={ project_list } />
         )
     }
 }

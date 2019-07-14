@@ -4,12 +4,12 @@ import Experience from '../component/Experience.js';
 class ExperienceContainer extends Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-            experience_list: [],
-        }
 		this.handleButton = this.handleButton.bind(this);
 		this.handleErrors = this.handleErrors.bind(this);
+
+        this.state = {
+            experience_list: [],
+        }
 	}
 
 	handleButton() {
@@ -18,9 +18,6 @@ class ExperienceContainer extends Component {
 
     handleErrors(response) {
         if (!response.ok) {
-            this.setState({            
-                
-            })
             throw Error(response.statusText)
         }
         return response

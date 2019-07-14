@@ -11,31 +11,31 @@ class ProjectAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            experience_list: props.experience_list,
+            project_list: props.project_list,
         }
     }
 
     componentDidUpdate(prevProps) {
         if (!_.isEqual(prevProps, this.props)){
             this.setState({
-                experience_list: this.props.experience_list,
+                project_list: this.props.project_list,
             })
         }
     }
 
     render() {
-        const { experience_list } = this.state;
+        const { project_list } = this.state;
         return (
             <div>
                 <Row>
                     {
-                        experience_list.map((item, index) => {
+                        project_list.map((item, index) => {
                             return (
                                 <Col lg={4} md={6} sm={12} xs={12} key={`${index}`}>
                                     <Card>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2">
-                                                { item.company_name }<br/> <small>{ item.role }</small>
+                                                { item.project_name }<br/> <small>{ item.duration }</small>
                                             </Card.Subtitle>
                                             <Button 
                                                 variant="outline-warning">Edit</Button> &nbsp;

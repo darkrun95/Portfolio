@@ -11,31 +11,31 @@ class EducationAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            experience_list: props.experience_list,
+            education_list: props.education_list,
         }
     }
 
     componentDidUpdate(prevProps) {
         if (!_.isEqual(prevProps, this.props)){
             this.setState({
-                experience_list: this.props.experience_list,
+                education_list: this.props.education_list,
             })
         }
     }
 
     render() {
-        const { experience_list } = this.state;
+        const { education_list } = this.state;
         return (
             <div>
                 <Row>
                     {
-                        experience_list.map((item, index) => {
+                        education_list.map((item, index) => {
                             return (
                                 <Col lg={4} md={6} sm={12} xs={12} key={`${index}`}>
                                     <Card>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2">
-                                                { item.company_name }<br/> <small>{ item.role }</small>
+                                                { item.college_name }<br/> <small>{ item.course }</small>
                                             </Card.Subtitle>
                                             <Button 
                                                 variant="outline-warning">Edit</Button> &nbsp;

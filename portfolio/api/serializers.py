@@ -5,7 +5,7 @@ import os
 from django.utils.timezone import now
 from accounts.models import *
 
-class UserSerializer(serializers.ModelSerializer):
+class UserUpdateSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         instance.access_token = validated_data['access_token']
         instance.refresh_token = validated_data['refresh_token']
@@ -64,7 +64,50 @@ class UserTokenSerializer(serializers.ModelSerializer):
             'token'
         ]
 
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = [
+            'email',
+            'first_name',
+            'last_name',
+            'description',
+            'github_link',
+            'linkedin_link',
+        ]
+
 class ExperienceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Experience
+        fields = '__all__'
+
+class EducationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Education
+        fields = '__all__'
+
+class ProjectSerializer(serializers.ModelSerializer):
+    skills = serializers.SerializerMethodField()
+    def get_skills(self, instance):
+        return [skill.skill_name for skill in instance.skills.all()]
+
+    class Meta:
+        model = Project
+        fields = [
+            'order',
+            'project_name',
+            'duration',
+            'project_link',
+            'description',
+            'skills',
+        ]
+
+class SkillSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Skill
+        fields = '__all__'
+
+class VolunteerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Volunteer
         fields = '__all__'

@@ -6,7 +6,7 @@ class SkillAdminContainer extends Component {
         super(props);
         this.is_cancelled = false
         this.state = {
-            experience_list: [],
+            skill_list: [],
         }
 
         this.handleErrors = this.handleErrors.bind(this);
@@ -24,7 +24,7 @@ class SkillAdminContainer extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/experience-list/', {
+        fetch('/api/skill-list/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ class SkillAdminContainer extends Component {
         .then(json => {
             if (json && !this.is_cancelled) {
                 this.setState({
-                    experience_list: json,
+                    skill_list: json,
                 })
             }
         })
@@ -45,10 +45,10 @@ class SkillAdminContainer extends Component {
     }
 
     render() {
-        const { experience_list } = this.state;
+        const { skill_list } = this.state;
         return (
             <SkillAdmin 
-                experience_list={ experience_list } />
+                skill_list={ skill_list } />
         )
     }
 }

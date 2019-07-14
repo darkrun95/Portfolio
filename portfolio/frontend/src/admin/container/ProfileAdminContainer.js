@@ -6,7 +6,7 @@ class ProfileAdminContainer extends Component {
         super(props);
         this.is_cancelled = false
         this.state = {
-            experience_list: [],
+            profile: {},
         }
 
         this.handleErrors = this.handleErrors.bind(this);
@@ -24,7 +24,7 @@ class ProfileAdminContainer extends Component {
     }
 
     componentDidMount() {
-        /*fetch('/api/experience-list/', {
+        fetch('/api/users/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,20 +35,20 @@ class ProfileAdminContainer extends Component {
         .then(json => {
             if (json && !this.is_cancelled) {
                 this.setState({
-                    experience_list: json,
+                    profile: json,
                 })
             }
         })
         .catch((error) => {
             console.error("Something went wrong.")
-        });*/
+        });
     }
 
     render() {
-        const { experience_list } = this.state;
+        const { profile } = this.state;
         return (
             <ProfileAdmin 
-                experience_list={ experience_list } />
+                profile={ profile } />
         )
     }
 }

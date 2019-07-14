@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ListGroup, Image, Col, Modal, Button } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import { _ } from 'underscore';
 
 class SideBar extends Component {
     constructor(props) {
@@ -9,7 +10,16 @@ class SideBar extends Component {
 
         this.state = {
             show: false,
+            skill_list: props.skill_list,
         };
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!_.isEqual(prevProps, this.props)){
+            this.setState({
+                skill_list: this.props.skill_list,
+            })
+        }
     }
 
     handleModal() {
@@ -20,6 +30,8 @@ class SideBar extends Component {
     }
 
     render() {
+        const { skill_list } = this.state;
+
         return (
             <div>
                 <ListGroup>
@@ -67,11 +79,19 @@ class SideBar extends Component {
                             </Modal.Header>
                             <Modal.Body>
                                 <span>
-                                    <Button 
-                                        className="inintoku-skill-button"
-                                        variant="outline-dark">
-                                        Python
-                                    </Button>
+                                    { 
+                                        skill_list.map((skill, i) => {
+                                            return (
+                                                <span key={`${i}`}>
+                                                    <Button 
+                                                        className="inintoku-skill-button"
+                                                        variant="outline-dark">
+                                                        { skill.skill_name } 
+                                                    </Button><span>&nbsp;</span>
+                                                </span>
+                                            )
+                                        })
+                                    }
                                 </span>
                             </Modal.Body>
                         </Modal>

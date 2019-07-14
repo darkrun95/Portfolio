@@ -6,11 +6,24 @@ import {
 	Image,
     Button 
 } from 'react-bootstrap';
+import { _ } from 'underscore';
 
 class Education extends Component {
     constructor(props) {
         super(props);
         this.handlePushBack = this.handlePushBack.bind(this);
+
+        this.state = {
+            education_list: props.education_list,
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!_.isEqual(prevProps, this.props)){
+            this.setState({
+                education_list: this.props.education_list,
+            })
+        }
     }
 
     handlePushBack() {
@@ -19,6 +32,8 @@ class Education extends Component {
     }
 
     render() {
+        const { education_list } = this.state;
+
         return (
             <div>
                 <Container>
@@ -34,25 +49,31 @@ class Education extends Component {
                     <Row className="inintoku-education-row">
                         <Col lg={1} md={1} sm={1} xs={1}></Col>
                         <Col lg={10} md={10} sm={10} xs={10}>
-                            <div className="inintoku-list-item">
-                                <div className="inintoku-icon-section">
-                                    <hr />
-                                </div>
-                                <div className="inintoku-university-listing">
-                                    <p className="inintoku-university-name">
-                                        <strong>Monash University</strong><br/>
-                                        <span className="inintoku-university-year">( 2018 - 2020 )</span>
-                                    </p>
-                                    <p className="inintoku-university-course">
-                                        <span>Masters of Data Science</span>
-                                    </p>
-                                    <span className="inintoku-university-description">
-                                        <ul>
-                                            <li>GPA: 3.5, WAM: 80</li>
-                                        </ul>
-                                    </span>
-                                </div>
-                            </div>
+                            {
+                                education_list.map((item, index) => {
+                                    return (
+                                        <div className="inintoku-list-item" key={`${index}`}>
+                                            <div className="inintoku-icon-section">
+                                                <hr />
+                                            </div>
+                                            <div className="inintoku-university-listing">
+                                                <p className="inintoku-university-name">
+                                                    <strong>{ item.college_name }</strong><br/>
+                                                    <span className="inintoku-university-year">( { item.duration } )</span>
+                                                </p>
+                                                <p className="inintoku-university-course">
+                                                    <span>{ item.course }</span>
+                                                </p>
+                                                <span className="inintoku-university-description">
+                                                    <ul>
+                                                        <li>{ item.description }</li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
                         </Col>
                     </Row>
                 </Container>

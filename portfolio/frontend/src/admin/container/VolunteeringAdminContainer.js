@@ -6,7 +6,7 @@ class VolunteeringAdminContainer extends Component {
         super(props);
         this.is_cancelled = false
         this.state = {
-            experience_list: [],
+            volunteering_list: [],
         }
 
         this.handleErrors = this.handleErrors.bind(this);
@@ -24,7 +24,7 @@ class VolunteeringAdminContainer extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/experience-list/', {
+        fetch('/api/volunteer-list/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ class VolunteeringAdminContainer extends Component {
         .then(json => {
             if (json && !this.is_cancelled) {
                 this.setState({
-                    experience_list: json,
+                    volunteering_list: json,
                 })
             }
         })
@@ -45,10 +45,10 @@ class VolunteeringAdminContainer extends Component {
     }
 
     render() {
-        const { experience_list } = this.state;
+        const { volunteering_list } = this.state;
         return (
             <VolunteeringAdmin 
-                experience_list={ experience_list } />
+                volunteering_list={ volunteering_list } />
         )
     }
 }

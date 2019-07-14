@@ -11,31 +11,31 @@ class SkillAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            experience_list: props.experience_list,
+            skill_list: props.skill_list,
         }
     }
 
     componentDidUpdate(prevProps) {
         if (!_.isEqual(prevProps, this.props)){
             this.setState({
-                experience_list: this.props.experience_list,
+                skill_list: this.props.skill_list,
             })
         }
     }
 
     render() {
-        const { experience_list } = this.state;
+        const { skill_list } = this.state;
         return (
             <div>
                 <Row>
                     {
-                        experience_list.map((item, index) => {
+                        skill_list.map((item, index) => {
                             return (
-                                <Col lg={4} md={6} sm={12} xs={12} key={`${index}`}>
+                                <Col lg={3} md={6} sm={12} xs={12} key={`${index}`}>
                                     <Card>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2">
-                                                { item.company_name }<br/> <small>{ item.role }</small>
+                                                { item.skill_name }<br/> <small>{ item.skill_type }</small>
                                             </Card.Subtitle>
                                             <Button 
                                                 variant="outline-warning">Edit</Button> &nbsp;

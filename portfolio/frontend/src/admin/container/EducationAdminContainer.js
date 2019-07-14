@@ -6,7 +6,7 @@ class EducationAdminContainer extends Component {
         super(props);
         this.is_cancelled = false
         this.state = {
-            experience_list: [],
+            education_list: [],
         }
 
         this.handleErrors = this.handleErrors.bind(this);
@@ -24,7 +24,7 @@ class EducationAdminContainer extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/experience-list/', {
+        fetch('/api/education-list/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -35,7 +35,7 @@ class EducationAdminContainer extends Component {
         .then(json => {
             if (json && !this.is_cancelled) {
                 this.setState({
-                    experience_list: json,
+                    education_list: json,
                 })
             }
         })
@@ -45,10 +45,10 @@ class EducationAdminContainer extends Component {
     }
 
     render() {
-        const { experience_list } = this.state;
+        const { education_list } = this.state;
         return (
             <EducationAdmin 
-                experience_list={ experience_list } />
+                education_list={ education_list } />
         )
     }
 }

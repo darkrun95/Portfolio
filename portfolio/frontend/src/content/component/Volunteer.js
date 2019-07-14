@@ -7,12 +7,24 @@ import {
     Link,
     Button 
 } from 'react-bootstrap';
+import { _ } from 'underscore';
 
 class Volunteer extends Component {
     constructor(props) {
         super(props);
         this.handlePushBack = this.handlePushBack.bind(this);
-        this.handleVolunteerLink = this.handleVolunteerLink.bind(this);
+
+        this.state = {
+            volunteering_list: props.volunteering_list,
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!_.isEqual(prevProps, this.props)){
+            this.setState({
+                volunteering_list: this.props.volunteering_list,
+            })
+        }
     }
 
     handlePushBack() {
@@ -20,12 +32,9 @@ class Volunteer extends Component {
         handleButtonCallback();
     }
 
-    handleVolunteerLink(volunteer_link) {
-        const { handleVolunteerCallback } = this.props;
-        handleVolunteerCallback(volunteer_link);
-    }
-
     render() {
+        const { volunteering_list } = this.state;
+
         return (
             <div>
                 <Container>
@@ -41,27 +50,33 @@ class Volunteer extends Component {
                     <Row className="inintoku-education-row">
                         <Col lg={1} md={1} sm={1} xs={1}></Col>
                         <Col lg={10} md={10} sm={10} xs={10}>
-                            <div className="inintoku-list-item">
-                                <div className="inintoku-icon-section">
-                                    <hr />
-                                </div>
-                                <div className="inintoku-university-listing">
-                                    <p className="inintoku-university-name">
-                                        <strong>
-                                            Accredited Student
-                                        </strong><br/>
-                                        <span className="inintoku-university-year">( Sep 2014 – Jan 2017 )</span>
-                                    </p>
-                                    <p className="inintoku-university-course">
-                                        <span><strong>Computer Society of India</strong></span>
-                                    </p>
-                                    <span className="inintoku-university-description">
-                                        <ul>
-                                            <li>CSI accredited Student from PES Modern College of Engineering.</li>
-                                        </ul>
-                                    </span>
-                                </div>
-                            </div>
+                            {
+                                volunteering_list.map((item, index) => {
+                                    return (
+                                        <div className="inintoku-list-item" key={`${index}`}>
+                                            <div className="inintoku-icon-section">
+                                                <hr />
+                                            </div>
+                                            <div className="inintoku-university-listing">
+                                                <p className="inintoku-university-name">
+                                                    <strong>
+                                                        { item.volunteer_name }
+                                                    </strong><br/>
+                                                    <span className="inintoku-university-year">( { item.duration } )</span>
+                                                </p>
+                                                <p className="inintoku-university-course">
+                                                    <span><strong>{ item.organization }</strong></span>
+                                                </p>
+                                                <span className="inintoku-university-description">
+                                                    <ul>
+                                                        <li>{ item.description }</li>
+                                                    </ul>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
                         </Col>
                     </Row>
                 </Container>

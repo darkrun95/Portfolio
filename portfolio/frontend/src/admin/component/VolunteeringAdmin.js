@@ -11,31 +11,31 @@ class VolunteeringAdmin extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            experience_list: props.experience_list,
+            volunteering_list: props.volunteering_list,
         }
     }
 
     componentDidUpdate(prevProps) {
         if (!_.isEqual(prevProps, this.props)){
             this.setState({
-                experience_list: this.props.experience_list,
+                volunteering_list: this.props.volunteering_list,
             })
         }
     }
 
     render() {
-        const { experience_list } = this.state;
+        const { volunteering_list } = this.state;
         return (
             <div>
                 <Row>
                     {
-                        experience_list.map((item, index) => {
+                        volunteering_list.map((item, index) => {
                             return (
                                 <Col lg={4} md={6} sm={12} xs={12} key={`${index}`}>
                                     <Card>
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2">
-                                                { item.company_name }<br/> <small>{ item.role }</small>
+                                                { item.volunteer_name }<br/> <small>{ item.organization }</small>
                                             </Card.Subtitle>
                                             <Button 
                                                 variant="outline-warning">Edit</Button> &nbsp;
