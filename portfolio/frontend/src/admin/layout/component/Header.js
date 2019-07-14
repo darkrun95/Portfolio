@@ -16,6 +16,10 @@ class Header extends Component {
 		return (
 			<div>
 				<Button 
+                		className="inintoku-change-password-button inintoku-change-password-header-btn"
+	                    variant="outline-warning"
+	                    onClick={ this.handleLogOut }>Change Password</Button> &nbsp;
+				<Button 
                     variant="outline-danger"
                     onClick={ this.handleLogOut }>Log Out</Button>
 			</div>

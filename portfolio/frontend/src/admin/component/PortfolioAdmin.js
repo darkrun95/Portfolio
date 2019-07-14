@@ -13,11 +13,11 @@ class PortfolioAdmin extends Component {
         return (
             <div className="no-style">
                 <Row>
-                    <Col lg={2} md={1} sm={1} xs={1} className="inintoku-admin-sidebar-container">
+                    <Col lg={2} md={3} xs={2} className="inintoku-admin-sidebar-container">
                         <SideBarContainer />
                     </Col>
 
-                    <Col lg={10} md={1} sm={1} xs={1} className="inintoku-admin-dashboard">
+                    <Col lg={10} md={9} xs={10} className="inintoku-admin-dashboard">
                         <HeaderContainer />
                         <BodyContainer />
                     </Col>

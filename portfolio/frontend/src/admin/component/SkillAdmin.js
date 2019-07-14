@@ -32,7 +32,7 @@ class SkillAdmin extends Component {
                         skill_list.map((item, index) => {
                             return (
                                 <Col lg={3} md={6} sm={12} xs={12} key={`${index}`}>
-                                    <Card>
+                                    <Card className="inintoku-admin-entry-card">
                                         <Card.Body>
                                             <Card.Subtitle className="mb-2">
                                                 { item.skill_name }<br/> <small>{ item.skill_type }</small>

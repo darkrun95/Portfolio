@@ -238,6 +238,17 @@ button.close {
     padding-left: 0px;
 }
 
+.inintoku-admin-entry-card {
+    margin-bottom: 5%;
+}
+
+.inintoku-change-password-header-btn {
+    display: none !important;
+}
+
+.inintoku-change-password-sidebar-btn {
+    display: inline-block !important;
+}
 
 /* End Custom Styling */
 
@@ -258,6 +269,14 @@ button.close {
 
     .inintoku-form {
         margin-top: 6%;
+    }
+
+    .inintoku-change-password-header-btn {
+        display: none !important;
+    }
+
+    .inintoku-change-password-sidebar-btn {
+        display: inline-block !important;
     }
 }
 
@@ -316,6 +335,37 @@ button.close {
 
     .inintoku-form {
         margin-top: 6%;
+    }
+
+    /*
+    ------------------------------------
+    Admin Page Styling [ Mobile Screen ]
+    ------------------------------------
+    */
+    .inintoku-sidebar-image {
+        width: 80%;
+    }
+
+    .inintoku-sidebar-icon {
+        width: 120%;
+    }
+
+    .inintoku-hidden {
+        display: none !important;
+    }
+
+    .inintoku-change-password-header-btn {
+        display: inline-block !important;
+    }
+
+    .inintoku-change-password-sidebar-btn {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .inintoku-sidebar-icon {
+        width: 180%;
     }
 }
 /* End Responsive Design */

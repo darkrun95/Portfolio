@@ -37,7 +37,7 @@ class SideBar extends Component {
 	                           fluid
 	                           roundedCircle
 	                           thumbnail />
-                	<Toast>
+                	<Toast className="inintoku-hidden">
 						<Toast.Header className="inintoku-block inintoku-center">
 							<strong>Arun Pottekat</strong>
 						</Toast.Header>
@@ -47,39 +47,39 @@ class SideBar extends Component {
                 	<ListGroup>
                 		<ListGroup.Item className="profile" onClick={ this.clickEvent }>
                             <Image src="/static/inintoku/img/profile.svg" className="inintoku-sidebar-icon" />
-                            Profile
+                            <span className="inintoku-hidden">Profile</span>
                         </ListGroup.Item>
 
 	                    <ListGroup.Item className="experience" onClick={ this.clickEvent }>
                             <Image src="/static/inintoku/img/work.svg" className="inintoku-sidebar-icon" />
-                            Experience
+                            <span className="inintoku-hidden">Experience</span>
                         </ListGroup.Item>
 	                    
 	                    <ListGroup.Item className="qualifications" onClick={ this.clickEvent }>
                             <Image src="/static/inintoku/img/college.svg" className="inintoku-sidebar-icon" />
-                            Qualifications
+                            <span className="inintoku-hidden">Qualifications</span>
                         </ListGroup.Item>
 	                    	                    
 	                    <ListGroup.Item className="projects" onClick={ this.clickEvent }>
                             <Image src="/static/inintoku/img/project.svg" className="inintoku-sidebar-icon" />
-                            Projects
+                            <span className="inintoku-hidden">Projects</span>
                         </ListGroup.Item>
 	                    
 	                    <ListGroup.Item className="skills" onClick={ this.clickEvent }>
 	                        <Image src="/static/inintoku/img/skills.svg" className="inintoku-sidebar-icon" />
-	                        Technical Skills
+	                        <span className="inintoku-hidden">Technical Skills</span>
 	                    </ListGroup.Item>
 
 	                    <ListGroup.Item className="volunteering" onClick={ this.clickEvent }>
                             <Image src="/static/inintoku/img/activities.svg" className="inintoku-sidebar-icon" />
-                            Volunteering
+                            <span className="inintoku-hidden">Volunteering</span>
 	                    </ListGroup.Item>
 					</ListGroup>      
                 </div>
 
                 <div className="inintoku-admin-sidebar-footer">
                 	<Button 
-                		className="inintoku-change-password-button"
+                		className="inintoku-change-password-button inintoku-change-password-sidebar-btn"
 	                    variant="outline-warning"
 	                    onClick={ this.handleLogOut }>Change Password</Button>
                 </div>
