@@ -1,7 +1,9 @@
-import { SET_PANEL } from '../actions/types';
+import { SET_PANEL, SET_IMAGE } from '../actions/types';
 
 const initialState = {
 	panelSelection: undefined,
+	changePanel: undefined,
+	profile_image: undefined,
 }
 
 export default function(state = initialState, action) {
@@ -9,7 +11,13 @@ export default function(state = initialState, action) {
 		case SET_PANEL:
 			return {
 				...state,
-				panelSelection: action.payload
+				panelSelection: action.payload.selectedElement,
+				changePanel: action.payload.changePanel,
+			}
+		case SET_IMAGE:
+			return {
+				...state,
+				profile_image: action.payload.profile_image,
 			}
 		default:
 			return state;

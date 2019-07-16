@@ -16,7 +16,7 @@ class ProfileAdmin extends Component {
 
     initiateFormUpdate() {
         const { initiateFormUpdateCallback } = this.props;
-        initiateFormUpdateCallback();
+        initiateFormUpdateCallback("admin-profile");
     }
 
     componentDidUpdate(prevProps) {
@@ -37,7 +37,7 @@ class ProfileAdmin extends Component {
                         <Row>
                             <Col lg={3} md={5} xs={5}>
                                 <Image className="inintoku-sidebar-image" 
-                                           src="/static/inintoku/img/face.jpg" 
+                                           src={"/" + profile.profile_image}
                                            fluid
                                            roundedCircle
                                            thumbnail />

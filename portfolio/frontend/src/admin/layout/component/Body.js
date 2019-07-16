@@ -3,12 +3,13 @@ import { _ } from 'underscore';
 
 import { Card, Button, Col, Row } from 'react-bootstrap';
 
-import ProfileAdminContainer from '../../container/ProfileAdminContainer.js';
-import ExperienceAdminContainer from '../../container/ExperienceAdminContainer.js';
-import EducationAdminContainer from '../../container/EducationAdminContainer.js';
-import ProjectAdminContainer from '../../container/ProjectAdminContainer.js';
-import SkillAdminContainer from '../../container/SkillAdminContainer.js';
-import VolunteeringAdminContainer from '../../container/VolunteeringAdminContainer.js';
+import ProfileAdminContainer from '../../container/profile/ProfileAdminContainer';
+import ExperienceAdminContainer from '../../container/ExperienceAdminContainer';
+import EducationAdminContainer from '../../container/EducationAdminContainer';
+import ProjectAdminContainer from '../../container/ProjectAdminContainer';
+import SkillAdminContainer from '../../container/SkillAdminContainer';
+import VolunteeringAdminContainer from '../../container/VolunteeringAdminContainer';
+import ProfileUpdateContainer from '../../container/profile/ProfileUpdateContainer';
 
 class Body extends Component {
 	constructor(props) {
@@ -54,6 +55,10 @@ class Body extends Component {
     			return (
     				<VolunteeringAdminContainer />
     			) 
+            case 'admin-profile':
+                return (
+                    <ProfileUpdateContainer />
+                )
     		default:
     			return (
     				<ProfileAdminContainer />

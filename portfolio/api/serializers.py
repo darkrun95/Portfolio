@@ -65,6 +65,17 @@ class UserTokenSerializer(serializers.ModelSerializer):
         ]
 
 class UserSerializer(serializers.ModelSerializer):
+    def update(self, instance, validated_data):
+        instance.email          = validated_data['email']
+        instance.first_name     = validated_data['first_name']
+        instance.last_name      = validated_data['last_name']
+        instance.description    = validated_data['description']
+        instance.github_link    = validated_data['github_link']
+        instance.linkedin_link  = validated_data['linkedin_link']
+        instance.profile_image  = validated_data['profile_image']
+        instance.save()
+        return instance
+
     class Meta:
         model = get_user_model()
         fields = [
@@ -74,6 +85,7 @@ class UserSerializer(serializers.ModelSerializer):
             'description',
             'github_link',
             'linkedin_link',
+            'profile_image',
         ]
 
 class ExperienceSerializer(serializers.ModelSerializer):

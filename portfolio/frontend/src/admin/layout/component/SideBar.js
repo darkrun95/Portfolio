@@ -76,13 +76,6 @@ class SideBar extends Component {
 	                    </ListGroup.Item>
 					</ListGroup>      
                 </div>
-
-                <div className="inintoku-admin-sidebar-footer">
-                	<Button 
-                		className="inintoku-change-password-button inintoku-change-password-sidebar-btn"
-	                    variant="outline-warning"
-	                    onClick={ this.handleLogOut }>Change Password</Button>
-                </div>
 			</div>
 		)
 	}

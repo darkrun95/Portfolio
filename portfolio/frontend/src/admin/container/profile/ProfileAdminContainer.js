@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import ProfileAdmin from '../component/ProfileAdmin.js';
+import { connect } from 'react-redux';
+
+import { setPanel } from '../../../redux/actions/panelActions';
+import ProfileAdmin from '../../component/profile/ProfileAdmin.js';
 
 class ProfileAdminContainer extends Component {
     constructor(props) {
@@ -20,8 +23,11 @@ class ProfileAdminContainer extends Component {
         return response
     }
 
-    initiateFormUpdate() {
-        console.log("Initiating Update")
+    initiateFormUpdate(panel) {
+        this.props.setPanel({
+            selectedElement: panel,
+            changePanel: false
+        })
     }
 
     componentWillUnmount() {
@@ -59,4 +65,4 @@ class ProfileAdminContainer extends Component {
     }
 }
 
-export default ProfileAdminContainer;
+export default connect(null, { setPanel })(ProfileAdminContainer);

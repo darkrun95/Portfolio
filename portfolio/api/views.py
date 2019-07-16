@@ -13,7 +13,7 @@ from accounts.models import *
 User = get_user_model()
 
 class UserView(APIView):
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
 
     def get(self, request, format=None):
         user = User.objects.get(username='arun')
@@ -24,9 +24,29 @@ class UserView(APIView):
             'description': user.description,
             'github_link': user.github_link,
             'linkedin_link': user.linkedin_link,
+            'profile_image': user.profile_image if user.profile_image else None,
         }
+
         serializer = serializers.UserSerializer(data)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, format=None):
+        user = User.objects.get(username=request.user.username)
+        data = {
+            'email': request.data['email'],
+            'first_name': request.data['first_name'],
+            'last_name': request.data['last_name'],
+            'description': request.data['description'],
+            'github_link': request.data['github_link'],
+            'linkedin_link': request.data['linkedin_link'],
+            'profile_image': user.profile_image,
+        }
+
+        serializer = serializers.UserSerializer(instance = request.user, data = data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class UserLogin(APIView):
     permission_classes = (permissions.AllowAny, )
@@ -125,3 +145,24 @@ class VolunteerList(APIView):
             serializer = serializers.VolunteerSerializer(volunteer_list, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+class ProfileImage(APIView):
+    def post(self, request, format=None):
+        user = User.objects.get(username=request.user.username)
+
+        print(request.data)
+        data = {
+            'email': user.email,
+            'first_name': user.first_name,
+            'last_name': user.last_name,
+            'description': user.description,
+            'github_link': user.github_link,
+            'linkedin_link': user.linkedin_link,
+            'profile_image': request.data['file'],
+        }
+
+        serializer = serializers.UserSerializer(instance = request.user, data = data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

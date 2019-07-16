@@ -84,6 +84,12 @@ class Volunteer(models.Model):
     def __str__(self):
         return "{}".format(self.volunteer_name).strip()
 
+def user_upload_to(user, filename):
+    filename    = filename.split(".")
+    extension   = filename[1]
+    filename    = "{}-{}.{}".format(user.first_name, user.last_name, extension)
+    return "static/media/users/{}/{}".format(user.id, filename)
+
 class User(AbstractUser):
     # User demographic attributes
     email           = models.EmailField(max_length = 255, unique = True)
@@ -98,6 +104,7 @@ class User(AbstractUser):
     refresh_token   = models.CharField(max_length = 200, blank = True)
     expires_in      = models.IntegerField(blank = True, default = 0)
     token_type      = models.CharField(max_length = 20, blank = True)
+    profile_image   = models.ImageField(null = True, blank = True, upload_to = user_upload_to)
 
     class Meta:
         ordering = [

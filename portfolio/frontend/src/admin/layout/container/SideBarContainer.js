@@ -18,7 +18,10 @@ class SideBarContainer extends Component {
 		this.setState({
 			selectedElement: newState,
 		}, () => {
-			this.props.setPanel(this.state.selectedElement)
+			this.props.setPanel({
+				selectedElement: this.state.selectedElement, 
+				changePanel: true
+			})
 		})
 	}
 

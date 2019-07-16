@@ -16,6 +16,9 @@ urlpatterns = [
     path('project-list/', 		views.ProjectList.as_view()),
     path('skill-list/', 		views.SkillList.as_view()),
     path('volunteer-list/', 	views.VolunteerList.as_view()),
+
+    # Admin Update APIs
+    path('profile/image/',		views.ProfileImage.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
