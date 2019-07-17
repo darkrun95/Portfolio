@@ -18,7 +18,7 @@ class ProjectContainer extends Component {
 	}
 
 	handleProject(project_link) {
-	    window.location.href = project_link;
+        window.open(project_link, '_blank');
 	}
 
 	handleErrors(response) {

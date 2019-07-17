@@ -90,11 +90,10 @@ class CheckAuthentication(APIView):
     permission_classes = (permissions.AllowAny, )
 
     def get(self, request, id, format=None):
-        users = User.objects.filter(access_token = id)
-        if users.exists():
+        user = User.objects.filter(access_token = id)
+        if user.exists():
             return Response({'status': 'ok'}, status=status.HTTP_200_OK)
-        else:
-            return Response({'status': 'invalid'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'status': 'invalid'}, status=status.HTTP_401_UNAUTHORIZED)
 
 class ExperienceList(APIView):
     permission_classes = (permissions.AllowAny, )

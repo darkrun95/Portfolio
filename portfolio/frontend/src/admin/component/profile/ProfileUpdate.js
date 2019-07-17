@@ -12,6 +12,7 @@ class ProfileUpdate extends Component {
         }
 
         this.initiateFormUpdate = this.initiateFormUpdate.bind(this);
+        this.cancelFormUpdate = this.cancelFormUpdate.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -29,6 +30,11 @@ class ProfileUpdate extends Component {
     	handleSubmitProfile(profile);
     }
 
+    cancelFormUpdate() {
+    	const { handleCancelUpdate } = this.props;
+    	handleCancelUpdate()
+    }
+
     handleChange(event) {
     	const { profile } = this.state;
     	profile[event.target.name] = event.target.value;
@@ -43,6 +49,7 @@ class ProfileUpdate extends Component {
             <div>
             	{
             		profile === undefined ? "" :
+            		profile.profile_image === undefined ? "" :
 	                <Form> 
 	                	<Row>
 	                		<Col lg={3} md={5} xs={5}>
@@ -121,7 +128,7 @@ class ProfileUpdate extends Component {
 	                                variant="outline-success">Update</Button>
 	                            &nbsp;
 	                            <Button 
-	                                onClick={ this.initiateFormUpdate }
+	                                onClick={ this.cancelFormUpdate }
 	                                variant="outline-danger">Cancel</Button>
 	                        </Col>
 	                    </Form.Group>

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 
 import SideBar from '../component/SideBar';
 import { setPanel } from '../../../redux/actions/panelActions';
+import store from '../../../store';
+import { _ } from 'underscore';
 
 class SideBarContainer extends Component {
 	constructor(props) {
@@ -11,7 +13,17 @@ class SideBarContainer extends Component {
 
 		this.state = {
 			selectedElement: undefined,
+			profile_image: props.profile_image,
 		}
+
+		store.subscribe(() => {
+			const { profile_image } = store.getState().adminPanelSelection
+			if (profile_image !== undefined) {
+				this.setState({
+					profile_image: profile_image,
+				})
+			}
+		})
 	}
 
 	changeSelectedElement(newState) {
@@ -25,10 +37,25 @@ class SideBarContainer extends Component {
 		})
 	}
 
+	componentDidUpdate(prevProps) {
+        if (!_.isEqual(prevProps, this.props)){
+            this.setState({
+                profile_image: this.props.profile_image,
+            })
+        }
+    }
+
 	render() {
+		const { profile_image } = this.state;
 		return (
-			<SideBar 
-				handleChangeSelection={this.changeSelectedElement} />
+			<div className="inintoku-admin-sidebar">
+			{
+				profile_image === undefined ? "" :
+				<SideBar 
+					profile_image = { profile_image }
+					handleChangeSelection={this.changeSelectedElement} />
+			}
+			</div>
 		)
 	}
 }

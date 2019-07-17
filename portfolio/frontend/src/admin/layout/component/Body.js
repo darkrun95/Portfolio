@@ -4,12 +4,14 @@ import { _ } from 'underscore';
 import { Card, Button, Col, Row } from 'react-bootstrap';
 
 import ProfileAdminContainer from '../../container/profile/ProfileAdminContainer';
-import ExperienceAdminContainer from '../../container/ExperienceAdminContainer';
 import EducationAdminContainer from '../../container/EducationAdminContainer';
+import ExperienceAdminContainer from '../../container/ExperienceAdminContainer';
 import ProjectAdminContainer from '../../container/ProjectAdminContainer';
 import SkillAdminContainer from '../../container/SkillAdminContainer';
 import VolunteeringAdminContainer from '../../container/VolunteeringAdminContainer';
+
 import ProfileUpdateContainer from '../../container/profile/ProfileUpdateContainer';
+import EducationUpdateContainer from '../../container/education/EducationUpdateContainer';
 
 class Body extends Component {
 	constructor(props) {
@@ -35,6 +37,10 @@ class Body extends Component {
     			return (
     				<ProfileAdminContainer />
     			)
+            case 'admin-profile':
+                return (
+                    <ProfileUpdateContainer />
+                )
     		case 'experience':
     			return (
     				<ExperienceAdminContainer />
@@ -43,6 +49,10 @@ class Body extends Component {
     			return (
     				<EducationAdminContainer />
     			)
+            case 'admin-qualifications':
+                return (
+                    <EducationUpdateContainer />
+                )
     		case 'projects':
     			return (
     				<ProjectAdminContainer />
@@ -55,10 +65,6 @@ class Body extends Component {
     			return (
     				<VolunteeringAdminContainer />
     			) 
-            case 'admin-profile':
-                return (
-                    <ProfileUpdateContainer />
-                )
     		default:
     			return (
     				<ProfileAdminContainer />

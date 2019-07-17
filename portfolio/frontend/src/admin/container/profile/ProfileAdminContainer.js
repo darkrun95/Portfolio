@@ -9,7 +9,7 @@ class ProfileAdminContainer extends Component {
         super(props);
         this.is_cancelled = false
         this.state = {
-            profile: {},
+            profile: undefined,
         }
 
         this.handleErrors = this.handleErrors.bind(this);

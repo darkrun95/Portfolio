@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Image, Toast, ListGroup, Button } from 'react-bootstrap';
+import { _ } from 'underscore';
+import { Link } from "react-router-dom";
 
 class SideBar extends Component {
 	constructor(props) {
@@ -7,6 +9,7 @@ class SideBar extends Component {
 		this.clickEvent = this.clickEvent.bind(this);
 		this.state = {
 			selectedElement: undefined,
+			profile_image: props.profile_image,
 		}
 	}
 
@@ -28,15 +31,29 @@ class SideBar extends Component {
 		})
 	}
 
+	componentDidUpdate(prevProps) {
+        if (!_.isEqual(prevProps, this.props)){
+            this.setState({
+                profile_image: this.props.profile_image,
+            })
+        }
+    }
+
 	render() {
+		const { profile_image } = this.state;
 		return (
-			<div className="inintoku-admin-sidebar">
+			<div>
 				<div className="inintoku-sidebar-image-container">
-					<Image className="inintoku-sidebar-image" 
-	                           src="/static/inintoku/img/face.jpg" 
-	                           fluid
-	                           roundedCircle
-	                           thumbnail />
+					<Link
+                        to = {{
+                            pathname: "/",
+                        }} >
+						<Image className="inintoku-sidebar-image" 
+		                           src={"/" + profile_image}
+		                           fluid
+		                           roundedCircle
+		                           thumbnail />
+	                </Link>
                 	<Toast className="inintoku-hidden">
 						<Toast.Header className="inintoku-block inintoku-center">
 							<strong>Arun Pottekat</strong>
@@ -76,7 +93,7 @@ class SideBar extends Component {
 	                    </ListGroup.Item>
 					</ListGroup>      
                 </div>
-			</div>
+            </div>
 		)
 	}
 }

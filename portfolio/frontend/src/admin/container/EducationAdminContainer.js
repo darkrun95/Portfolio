@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { setPanel } from '../../redux/actions/panelActions';
 import EducationAdmin from '../component/EducationAdmin.js';
 
 class EducationAdminContainer extends Component {
@@ -10,6 +13,7 @@ class EducationAdminContainer extends Component {
         }
 
         this.handleErrors = this.handleErrors.bind(this);
+        this.initiateFormUpdate = this.initiateFormUpdate.bind(this);
     }
 
     handleErrors(response) {
@@ -17,6 +21,13 @@ class EducationAdminContainer extends Component {
             throw Error(response.statusText)
         }
         return response
+    }
+
+    initiateFormUpdate(panel) {
+        this.props.setPanel({
+            selectedElement: panel,
+            changePanel: false
+        })
     }
 
     componentWillUnmount() {
@@ -48,9 +59,10 @@ class EducationAdminContainer extends Component {
         const { education_list } = this.state;
         return (
             <EducationAdmin 
+                initiateFormUpdateCallback={ this.initiateFormUpdate }
                 education_list={ education_list } />
         )
     }
 }
 
-export default EducationAdminContainer;
+export default connect(null, { setPanel })(EducationAdminContainer);

@@ -1,7 +1,7 @@
 /* Begin Global Styles */
 :root {
     --main-font-color: #333333;
-    --main-white: #F9F9F9;
+    --main-white: #FFFFFF;
     --main-black: #333333;
     --main-blue: #e5efff;
     --secondary-blue: #72a8ff;
@@ -36,6 +36,10 @@ html, body {
 
 .no-style {
     margin-top: -10%;
+}
+
+.form-control:disabled {
+    background-color: var(--main-white);
 }
 /* End Global Styles */
 
@@ -117,7 +121,8 @@ a{
 }
 
 .inintoku-face-image {
-    width: 60%;
+    width: 140px;
+    height: 140px;
 }
 
 .inintoku-education-item, .inintoku-list-item {
@@ -345,7 +350,8 @@ button.close {
     }
 
     .inintoku-face-image {
-        width: 40%;
+        width: 120px;
+        height: 120px;
     }
 
     .inintoku-university-listing {

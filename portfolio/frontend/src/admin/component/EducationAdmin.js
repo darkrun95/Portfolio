@@ -10,6 +10,8 @@ import { _ } from 'underscore';
 class EducationAdmin extends Component {
     constructor(props) {
         super(props);
+        this.initiateFormUpdate = this.initiateFormUpdate.bind(this);
+
         this.state = {
             education_list: props.education_list,
         }
@@ -21,6 +23,11 @@ class EducationAdmin extends Component {
                 education_list: this.props.education_list,
             })
         }
+    }
+
+    initiateFormUpdate() {
+        const { initiateFormUpdateCallback } = this.props;
+        initiateFormUpdateCallback("admin-qualifications");
     }
 
     render() {
@@ -38,6 +45,8 @@ class EducationAdmin extends Component {
                                                 { item.college_name }<br/> <small>{ item.course }</small>
                                             </Card.Subtitle>
                                             <Button 
+                                                onClick={ (event)=>{ console.log(event.target.value) } }
+                                                value={ item.id }
                                                 variant="outline-warning">Edit</Button> &nbsp;
                                             <Button 
                                                 variant="outline-danger">Delete</Button>
@@ -51,7 +60,11 @@ class EducationAdmin extends Component {
                         <Card>
                             <Card.Body>
                                 <Card.Text>
-                                    <Button variant="outline-success"><span>&#43;</span> Add</Button>
+                                    <Button 
+                                        onClick={ this.initiateFormUpdate }
+                                        variant="outline-success">
+                                        <span>&#43;</span> Add
+                                    </Button>
                                 </Card.Text>
                             </Card.Body>
                         </Card>

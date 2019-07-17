@@ -91,8 +91,8 @@ class Project extends Component {
         			                                { 
                                                         item.skills.map((skill, i) => {
                                                             return (
-                                                                <span>
-                                                                    <Button variant="outline-secondary" key={`${i}`}>
+                                                                <span key={`${i}`}>
+                                                                    <Button variant="outline-secondary">
                                                                         { skill } 
                                                                     </Button><span>&nbsp;</span>
                                                                 </span>

@@ -15,19 +15,20 @@ class ProfileUpdateContainer extends Component {
 
         store.subscribe(() => {
         	const { profile } = this.state;
-        	profile.profile_image = store.getState().adminPanelSelection.profile_image,
+        	profile.profile_image = store.getState().adminPanelSelection.profile_image
 
-			this.setState({
-				profile: profile,
-				redirect: false
-			})
-
-			console.log(this.state)
+            if (!this.is_cancelled) {
+    			this.setState({
+    				profile: profile,
+    				redirect: false
+    			})
+            }
 		})
 
 		this.handleErrors = this.handleErrors.bind(this);
 		this.submitProfile = this.submitProfile.bind(this);
 		this.renderRedirect = this.renderRedirect.bind(this);
+        this.cancelFormUpdate = this.cancelFormUpdate.bind(this);
     }
 
     handleErrors(response) {
@@ -38,6 +39,7 @@ class ProfileUpdateContainer extends Component {
     }
 
     componentWillUnmount() {
+        store.subscribe(() => {})
         this.is_cancelled = true;
     }
 
@@ -64,6 +66,14 @@ class ProfileUpdateContainer extends Component {
         .catch((error) => {
             console.error("Something went wrong.")
         });
+    }
+
+    cancelFormUpdate() {
+        this.setState({
+            redirect: true
+        }, () => {
+            this.renderRedirect();
+        })
     }
 
     renderRedirect() {
@@ -102,6 +112,7 @@ class ProfileUpdateContainer extends Component {
         return (
             <ProfileUpdate 
             	profile={ profile }
+                handleCancelUpdate = { this.cancelFormUpdate }
             	handleSubmitProfile={ this.submitProfile } />
         );
     }
