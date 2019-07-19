@@ -7,7 +7,6 @@ app_name = "api"
 
 urlpatterns = [
     path('token-auth/',						views.TokenAuthorization.as_view()),
-    path('login/',							views.UserLogin.as_view()),
     path('check-authenticated/<str:id>/', 	views.CheckAuthentication.as_view()),
 
     path('users/',      		views.UserView.as_view()),

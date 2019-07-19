@@ -106,32 +106,10 @@ class AuthenticationContainer extends Component {
         .then(this.handleErrors)
         .then(response => response.json())
         .then(json => {
-            const login_credentials = {
-                username: data['username'],
-                access_token: json['token']['access_token'],
-                expires_in: json['token']['expires_in'],
-                token_type: json['token']['token_type'],
-                refresh_token: json['token']['refresh_token']
-            }
-
-            fetch('/api/login/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(login_credentials)
+            localStorage.setItem('acs_token', json['access_token'])
+            this.setState({
+                redirect: true,
             })
-            .then(this.handleErrors)
-            .then(response => response.json())
-            .then(json => {
-                localStorage.setItem('acs_token', json['access_token'])
-                this.setState({
-                    redirect: true,
-                })
-            })
-            .catch((error) => {
-                console.error("Login operation failed.")
-            });
         })
         .catch((error) => {
             console.error("Oops wrong username or password. Please try again.")

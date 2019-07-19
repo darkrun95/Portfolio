@@ -6,6 +6,7 @@ class PortfolioAdminContainer extends Component {
 	constructor(props) {
 		super(props);
 
+        this.is_cancelled = false;
         this.state = {
             profile_image: undefined,
         }
@@ -27,7 +28,7 @@ class PortfolioAdminContainer extends Component {
         .then(this.handleErrors)
         .then(response => response.json())
         .then(json => {
-            if (json) {
+            if (json && !this.is_cancelled) {
                 this.setState({
                     profile_image: json.profile_image,
                 })
@@ -36,6 +37,10 @@ class PortfolioAdminContainer extends Component {
         .catch((error) => {
             console.error("Something went wrong.")
         });
+    }
+
+    componentWillUnmount() {
+        this.is_cancelled = true;
     }
 
     render() {
