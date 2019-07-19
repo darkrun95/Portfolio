@@ -4,6 +4,7 @@ import {
     Button, 
     Col, Row, Form
 } from 'react-bootstrap';
+import RichTextEditor from '../../../utils/RichTextEditor';
 
 class EducationUpdate extends Component {
     constructor(props) {
@@ -55,7 +56,8 @@ class EducationUpdate extends Component {
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridDescription">
                             <Form.Label>Description</Form.Label>
-                            <Form.Control as="textarea" rows="10" cols="12" />
+                            {/*<Form.Control as="textarea" rows="10" cols="12" />*/}
+                            <RichTextEditor />
                         </Form.Group>
                     </Form.Row>
                 </Form>
