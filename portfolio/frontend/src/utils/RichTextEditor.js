@@ -1,185 +1,215 @@
-import React, { Component } from 'react';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { Editor } from 'slate-react'
+import { Value } from 'slate'
+
+import React, { Component } from 'react'
+import { isKeyHotkey } from 'is-hotkey'
+import { Image } from 'react-bootstrap'
+
+const DEFAULT_NODE = 'paragraph'
+
+const isBoldHotkey = isKeyHotkey('mod+b')
+const isItalicHotkey = isKeyHotkey('mod+i')
+const isUnderlinedHotkey = isKeyHotkey('mod+u')
+const isCodeHotkey = isKeyHotkey('mod+`')
 
 class RichTextEditor extends React.Component {
-        constructor(props) {
-          super(props);
-          this.state = {editorState: EditorState.createEmpty()};
+    state = {
+        value: Value.fromJSON({
+            document: {
+                nodes: [
+                    {
+                        object: 'block',
+                        type: 'paragraph',
+                        nodes: [
+                            {
+                                object: 'text',
+                                text: 'A line of text in a paragraph.',
+                            },
+                        ],
+                    },
+                ],
+            },
+        }),
+    }
 
-          this.focus = () => this.refs.editor.focus();
-          this.onChange = (editorState) => this.setState({editorState});
+    hasMark = type => {
+        const { value } = this.state
+        return value.activeMarks.some(mark => mark.type === type)
+    }
 
-          this.handleKeyCommand = (command) => this._handleKeyCommand(command);
-          this.toggleBlockType = (type) => this._toggleBlockType(type);
-          this.toggleInlineStyle = (style) => this._toggleInlineStyle(style);
-        }
+    hasBlock = type => {
+        const { value } = this.state
+        return value.blocks.some(node => node.type === type)
+    }
 
-        _handleKeyCommand(command) {
-          const {editorState} = this.state;
-          const newState = RichUtils.handleKeyCommand(editorState, command);
-          if (newState) {
-            this.onChange(newState);
-            return true;
-          }
-          return false;
-        }
+    ref = editor => {
+        this.editor = editor
+    }
 
-        _toggleBlockType(blockType) {
-          this.onChange(
-            RichUtils.toggleBlockType(
-              this.state.editorState,
-              blockType
-            )
-          );
-        }
-
-        _toggleInlineStyle(inlineStyle) {
-          this.onChange(
-            RichUtils.toggleInlineStyle(
-              this.state.editorState,
-              inlineStyle
-            )
-          );
-        }
-
-        render() {
-          const {editorState} = this.state;
-
-          // If the user changes block type before entering any text, we can
-          // either style the placeholder or hide it. Let's just hide it now.
-          let className = 'RichEditor-editor';
-          var contentState = editorState.getCurrentContent();
-          if (!contentState.hasText()) {
-            if (contentState.getBlockMap().first().getType() !== 'unstyled') {
-              className += ' RichEditor-hidePlaceholder';
-            }
-          }
-
-          return (
-            <div className="RichEditor-root">
-              <BlockStyleControls
-                editorState={editorState}
-                onToggle={this.toggleBlockType}
-              />
-              <InlineStyleControls
-                editorState={editorState}
-                onToggle={this.toggleInlineStyle}
-              />
-              <div className={className} onClick={this.focus}>
+    render() {
+        return (
+            <div>
+                <div className="inintoku-toolbar">
+                    { this.renderMarkButton('bold', '/static/inintoku/img/bold.png') }
+                    { this.renderMarkButton('italic', '/static/inintoku/img/italic.png') }
+                    { this.renderMarkButton('underlined', '/static/inintoku/img/underline.png') }
+                    { this.renderMarkButton('code', '/static/inintoku/img/code.png') }
+                    { this.renderBlockButton('heading-one', '/static/inintoku/img/h1.png') }
+                    { this.renderBlockButton('heading-two', '/static/inintoku/img/h2.png') }
+                    { this.renderBlockButton('numbered-list', '/static/inintoku/img/numberedlist.png') }
+                    { this.renderBlockButton('bulleted-list', '/static/inintoku/img/unorderedlist.png') }
+                </div>
                 <Editor
-                  blockStyleFn={getBlockStyle}
-                  customStyleMap={styleMap}
-                  editorState={editorState}
-                  handleKeyCommand={this.handleKeyCommand}
-                  onChange={this.onChange}
-                  placeholder="Tell a story..."
-                  ref="editor"
-                  spellCheck={true}
+                    ref={ this.ref }
+                    value={ this.state.value }
+                    onChange={this.onChange}
+                    onKeyDown={this.onKeyDown}
+                    renderBlock={this.renderBlock}
+                    renderMark={this.renderMark}
                 />
-              </div>
             </div>
-          );
-        }
-      }
+        )
+    }
 
-      // Custom overrides for "code" style.
-      const styleMap = {
-        CODE: {
-          backgroundColor: 'rgba(0, 0, 0, 0.05)',
-          fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
-          fontSize: 16,
-          padding: 2,
-        },
-      };
-
-      function getBlockStyle(block) {
-        switch (block.getType()) {
-          case 'blockquote': return 'RichEditor-blockquote';
-          default: return null;
-        }
-      }
-
-      class StyleButton extends React.Component {
-        constructor() {
-          super();
-          this.onToggle = (e) => {
-            e.preventDefault();
-            this.props.onToggle(this.props.style);
-          };
-        }
-
-        render() {
-          let className = 'RichEditor-styleButton';
-          if (this.props.active) {
-            className += ' RichEditor-activeButton';
-          }
-
-          return (
-            <span className={className} onMouseDown={this.onToggle}>
-              {this.props.label}
-            </span>
-          );
-        }
-      }
-
-      const BLOCK_TYPES = [
-        {label: 'H1', style: 'header-one'},
-        {label: 'H2', style: 'header-two'},
-        {label: 'H3', style: 'header-three'},
-        {label: 'H4', style: 'header-four'},
-        {label: 'H5', style: 'header-five'},
-        {label: 'H6', style: 'header-six'},
-        {label: 'Blockquote', style: 'blockquote'},
-        {label: 'UL', style: 'unordered-list-item'},
-        {label: 'OL', style: 'ordered-list-item'},
-        {label: 'Code Block', style: 'code-block'},
-      ];
-
-      const BlockStyleControls = (props) => {
-        const {editorState} = props;
-        const selection = editorState.getSelection();
-        const blockType = editorState
-          .getCurrentContent()
-          .getBlockForKey(selection.getStartKey())
-          .getType();
+    renderMarkButton = (type, src) => {
+        const isActive = this.hasMark(type)
 
         return (
-          <div className="RichEditor-controls">
-            {BLOCK_TYPES.map((type) =>
-              <StyleButton
-                key={type.label}
-                active={type.style === blockType}
-                label={type.label}
-                onToggle={props.onToggle}
-                style={type.style}
-              />
-            )}
-          </div>
-        );
-      };
+            <div 
+            className="inintoku-mark"
+            onClick={ (event) => this.onClickMark(event, type) } >
+                <Image className="inintoku-mark-icon" src={ src } />
+            </div>
+        )
+    }
 
-      var INLINE_STYLES = [
-        {label: 'Bold', style: 'BOLD'},
-        {label: 'Italic', style: 'ITALIC'},
-        {label: 'Underline', style: 'UNDERLINE'},
-        {label: 'Monospace', style: 'CODE'},
-      ];
+    renderBlockButton = (type, src) => {
+        let isActive = this.hasBlock(type)
 
-      const InlineStyleControls = (props) => {
-        var currentStyle = props.editorState.getCurrentInlineStyle();
+        if (['numbered-list', 'bulleted-list'].includes(type)) {
+            const { value: { document, blocks } } = this.state
+
+            if (blocks.size > 0) {
+                const parent = document.getParent(blocks.first().key)
+                isActive = this.hasBlock('list-item') && parent && parent.type === type
+            }
+        }
+
         return (
-          <div className="RichEditor-controls">
-            {INLINE_STYLES.map(type =>
-              <StyleButton
-                key={type.label}
-                active={currentStyle.has(type.style)}
-                label={type.label}
-                onToggle={props.onToggle}
-                style={type.style}
-              />
-            )}
-          </div>
-        );
-      };
+            <div 
+                className="inintoku-mark"
+                onClick={ (event) => this.onClickBlock(event, type) } >
+                <Image className="inintoku-mark-icon" src={ src } />
+            </div>
+        )
+    }
 
-export default RichTextEditor;
+    renderBlock = (props, editor, next) => {
+        const { attributes, children, node } = props
+
+        switch (node.type) {
+            case 'bulleted-list':
+                return <ul {...attributes}>{children}</ul>
+            case 'heading-one':
+                return <h1 {...attributes}>{children}</h1>
+            case 'heading-two':
+                return <h2 {...attributes}>{children}</h2>
+            case 'list-item':
+                return <li {...attributes}>{children}</li>
+            case 'numbered-list':
+                return <ol {...attributes}>{children}</ol>
+            default:
+                return next()
+        }
+    }
+
+    renderMark = (props, editor, next) => {
+        const { children, mark, attributes } = props
+
+        switch (mark.type) {
+            case 'bold':
+                return <strong {...attributes}>{children}</strong>
+            case 'code':
+                return <code {...attributes}>{children}</code>
+            case 'italic':
+                return <em {...attributes}>{children}</em>
+            case 'underlined':
+                return <u {...attributes}>{children}</u>
+            default:
+                return next()
+        }
+    }
+
+    onChange = ({ value }) => {
+        this.setState({ value })
+    }
+
+    onKeyDown = (event, editor, next) => {
+        let mark
+
+        if (isBoldHotkey(event)) {
+            mark = 'bold'
+        } else if (isItalicHotkey(event)) {
+            mark = 'italic'
+        } else if (isUnderlinedHotkey(event)) {
+            mark = 'underlined'
+        } else if (isCodeHotkey(event)) {
+            mark = 'code'
+        } else {
+            return next()
+        }
+
+        event.preventDefault()
+        editor.toggleMark(mark)
+    }
+
+    onClickMark = (event, type) => {
+        event.preventDefault()
+        this.editor.toggleMark(type)
+    }
+
+    onClickBlock = (event, type) => {
+        event.preventDefault()
+
+        const { editor } = this
+        const { value } = editor
+        const { document } = value
+
+        if (type !== 'bulleted-list' && type !== 'numbered-list') {
+            const isActive = this.hasBlock(type)
+            const isList = this.hasBlock('list-item')
+
+            if (isList) {
+                editor
+                .setBlocks(isActive ? DEFAULT_NODE : type)
+                .unwrapBlock('bulleted-list')
+                .unwrapBlock('numbered-list')
+            } else {
+                editor.setBlocks(isActive ? DEFAULT_NODE : type)
+            }
+        } else {
+            const isList = this.hasBlock('list-item')
+            const isType = value.blocks.some(block => {
+                return !!document.getClosest(block.key, parent => parent.type === type)
+            })
+
+            if (isList && isType) {
+                editor
+                .setBlocks(DEFAULT_NODE)
+                .unwrapBlock('bulleted-list')
+                .unwrapBlock('numbered-list')
+            } else if (isList) {
+                editor
+                .unwrapBlock(
+                    type === 'bulleted-list' ? 'numbered-list' : 'bulleted-list'
+                )
+                .wrapBlock(type)
+            } else {
+                editor.setBlocks('list-item').wrapBlock(type)
+            }
+        }
+    }
+}
+
+
+export default RichTextEditor

@@ -56,8 +56,9 @@ class EducationUpdate extends Component {
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridDescription">
                             <Form.Label>Description</Form.Label>
-                            {/*<Form.Control as="textarea" rows="10" cols="12" />*/}
-                            <RichTextEditor />
+                            <div className="inintoku-richtext">
+                                <RichTextEditor />
+                            </div>
                         </Form.Group>
                     </Form.Row>
                 </Form>

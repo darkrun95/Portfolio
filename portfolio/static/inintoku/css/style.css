@@ -104,6 +104,40 @@ a{
     height: 100%;
 }
 
+.inintoku-richtext {
+    border: 1px solid #ced4da;
+    border-radius: 0.25em;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+    height: 300px;
+    padding: 1% 2% 1% 2%;
+    overflow: scroll;
+}
+
+.inintoku-toolbar {
+    border-bottom: 1px solid rgba(1, 1, 1, .2);
+    padding-bottom: 5px;
+}
+
+.inintoku-mark {
+    border: 1px solid #ced4da;
+    border-radius: 0.25em;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
+    display: inline-block;
+    padding: 5px;
+    margin: 1px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.inintoku-mark-icon {
+    width: 15px;
+    height: 15px;
+}
+
+.inintoku-mark-active {
+    background-color: rgba(1, 1, 1, 0.1);
+}
+
 .inintoku-social {
     width: 10%;
     display: inline-block;
