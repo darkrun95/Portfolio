@@ -10,11 +10,13 @@ import { _ } from 'underscore';
 class EducationAdmin extends Component {
     constructor(props) {
         super(props);
-        this.initiateFormUpdate = this.initiateFormUpdate.bind(this);
 
         this.state = {
             education_list: props.education_list,
         }
+
+        this.initiateFormUpdate = this.initiateFormUpdate.bind(this);
+        this.deleteEducation = this.deleteEducation.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -32,6 +34,11 @@ class EducationAdmin extends Component {
         } else {
             initiateFormUpdateCallback("update-qualifications", id);
         }
+    }
+
+    deleteEducation(id) {
+        const { handleDeleteEducation } = this.props;
+        handleDeleteEducation(id)
     }
 
     render() {
@@ -53,6 +60,8 @@ class EducationAdmin extends Component {
                                                 value={ item.id }
                                                 variant="outline-warning">Edit</Button> &nbsp;
                                             <Button 
+                                                onClick={ (event)=>{ this.deleteEducation(event.target.value) } }
+                                                value={ item.id }
                                                 variant="outline-danger">Delete</Button>
                                         </Card.Body>
                                     </Card>

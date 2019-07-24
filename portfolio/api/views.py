@@ -143,6 +143,14 @@ class EducationItem(APIView):
                 return Response(serializer.data, status=status.HTTP_200_OK)
             return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+    def delete(self, request, id, format=None):
+        try:
+            education_item = Education.objects.get(id = id)
+            education_item.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Exception as e:
+            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
 class ProjectList(APIView):
     permission_classes = (permissions.AllowAny, )
     

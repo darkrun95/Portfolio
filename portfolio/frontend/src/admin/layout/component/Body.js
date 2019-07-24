@@ -4,7 +4,7 @@ import { _ } from 'underscore';
 import { Card, Button, Col, Row } from 'react-bootstrap';
 
 import ProfileAdminContainer from '../../container/profile/ProfileAdminContainer';
-import EducationAdminContainer from '../../container/EducationAdminContainer';
+import EducationAdminContainer from '../../container/education/EducationAdminContainer';
 import ExperienceAdminContainer from '../../container/ExperienceAdminContainer';
 import ProjectAdminContainer from '../../container/ProjectAdminContainer';
 import SkillAdminContainer from '../../container/SkillAdminContainer';

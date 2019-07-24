@@ -25,6 +25,10 @@ html, body {
     color: var(--main-font-color);
 }
 
+.modal-content {
+    font-size: 15px !important;
+}
+
 .adminContainer {
     margin-top: -5%;
 }
@@ -353,6 +357,10 @@ button.close {
 @media screen and (max-width: 640px) {
     #app {
         font-size: 12px;
+    }
+
+    .modal-content {
+        font-size: 12px !important;
     }
 
     .btn,.form-control {
