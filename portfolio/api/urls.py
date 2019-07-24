@@ -10,7 +10,6 @@ urlpatterns = [
  
     path('project-list/', 		views.ProjectList.as_view()),
     path('skill-list/', 		views.SkillList.as_view()),
-    path('volunteer-list/', 	views.VolunteerList.as_view()),
 
     path('users/',              views.UserView.as_view()),
     path('profile/image/',		views.ProfileImage.as_view()),
@@ -22,6 +21,10 @@ urlpatterns = [
     path('experience-list/',    views.ExperienceList.as_view()),   
     path('experience/',         views.ExperienceItem.as_view()),
     path('experience/<int:id>/',views.ExperienceItem.as_view()),
+
+    path('volunteer-list/',     views.VolunteerList.as_view()),
+    path('volunteer/',          views.VolunteerItem.as_view()),
+    path('volunteer/<int:id>/', views.VolunteerItem.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

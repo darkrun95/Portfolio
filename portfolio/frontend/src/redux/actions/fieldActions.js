@@ -1,4 +1,4 @@
-import { SET_EDUCATION, SET_EXPERIENCE } from './types';
+import { SET_EDUCATION, SET_EXPERIENCE, SET_VOLUNTEER } from './types';
 
 export function setEducation(education_id) {
 	return function(dispatch) {
@@ -14,6 +14,15 @@ export function setExperience(experience_id) {
 		dispatch({
 			type: SET_EXPERIENCE,
 			payload: experience_id,
+		})
+	}
+}
+
+export function setVolunteering(volunteering_id) {
+	return function(dispatch) {
+		dispatch({
+			type: SET_VOLUNTEER,
+			payload: volunteering_id,
 		})
 	}
 }

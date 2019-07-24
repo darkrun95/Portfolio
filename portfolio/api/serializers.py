@@ -151,6 +151,20 @@ class SkillSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class VolunteerSerializer(serializers.ModelSerializer):
+    def update(self, instance, validated_data):
+        instance.order          = validated_data['order']
+        instance.volunteer_name = validated_data['volunteer_name']
+        instance.duration       = validated_data['duration']
+        instance.organization   = validated_data['organization']
+        instance.description    = validated_data['description']
+        instance.save()
+        return instance
+
+    def create(self, validated_data):
+        instance = self.Meta.model(**validated_data)
+        instance.save()
+        return instance
+
     class Meta:
         model = Volunteer
         fields = '__all__'

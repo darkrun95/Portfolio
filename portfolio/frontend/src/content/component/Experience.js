@@ -66,7 +66,7 @@ class Experience extends Component {
                                                     <ul>
                                                         <li>
                                                             URL: &nbsp;
-                                                            <a href="{ item.url }">
+                                                            <a href={ item.url }>
                                                                 <strong>{ item.display_url }</strong>
                                                             </a>
                                                         </li>

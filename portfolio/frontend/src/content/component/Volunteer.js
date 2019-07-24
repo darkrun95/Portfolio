@@ -8,6 +8,7 @@ import {
     Button 
 } from 'react-bootstrap';
 import { _ } from 'underscore';
+import RichTextEditor from '../../utils/RichTextEditor.js';
 
 class Volunteer extends Component {
     constructor(props) {
@@ -56,18 +57,14 @@ class Volunteer extends Component {
                                         <div className="inintoku-list-item" key={`${index}`}>
                                             <div className="inintoku-university-listing">
                                                 <p className="inintoku-university-name">
-                                                    <strong>
-                                                        { item.volunteer_name }
-                                                    </strong><br/>
+                                                    <strong>{ item.volunteer_name }</strong><br/>
                                                     <span className="inintoku-university-year">( { item.duration } )</span>
                                                 </p>
                                                 <p className="inintoku-university-course">
-                                                    <span><strong>{ item.organization }</strong></span>
+                                                    <span>{ item.organization }</span>
                                                 </p>
                                                 <span className="inintoku-university-description">
-                                                    <ul>
-                                                        <li>{ item.description }</li>
-                                                    </ul>
+                                                    <RichTextEditor content={ JSON.parse(item.description) } />
                                                 </span>
                                             </div>
                                         </div>

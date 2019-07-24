@@ -1,8 +1,9 @@
-import { SET_EDUCATION, SET_EXPERIENCE } from '../actions/types';
+import { SET_EDUCATION, SET_EXPERIENCE, SET_VOLUNTEER } from '../actions/types';
 
 const initialState = {
 	education_id: undefined,
 	experience_id: undefined,
+	volunteering_id: undefined,
 }
 
 export default function(state = initialState, action) {
@@ -16,6 +17,11 @@ export default function(state = initialState, action) {
 			return {
 				...state,
 				experience_id: action.payload.experience_id,
+			}
+		case SET_VOLUNTEER:
+			return {
+				...state,
+				volunteering_id: action.payload.volunteering_id,
 			}
 		default:
 			return state;

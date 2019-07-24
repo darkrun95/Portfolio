@@ -8,11 +8,12 @@ import EducationAdminContainer from '../../container/education/EducationAdminCon
 import ExperienceAdminContainer from '../../container/experience/ExperienceAdminContainer';
 import ProjectAdminContainer from '../../container/ProjectAdminContainer';
 import SkillAdminContainer from '../../container/SkillAdminContainer';
-import VolunteeringAdminContainer from '../../container/VolunteeringAdminContainer';
+import VolunteeringAdminContainer from '../../container/volunteer/VolunteeringAdminContainer';
 
 import ProfileUpdateContainer from '../../container/profile/ProfileUpdateContainer';
 import EducationUpdateContainer from '../../container/education/EducationUpdateContainer';
 import ExperienceUpdateContainer from '../../container/experience/ExperienceUpdateContainer';
+import VolunteeringUpdateContainer from '../../container/volunteer/VolunteeringUpdateContainer';
 
 class Body extends Component {
 	constructor(props) {
@@ -69,7 +70,11 @@ class Body extends Component {
     		case 'volunteering':
     			return (
     				<VolunteeringAdminContainer />
-    			) 
+    			)
+            case 'update-volunteering':
+                return (
+                    <VolunteeringUpdateContainer />
+                ) 
     		default:
     			return (
     				<ProfileAdminContainer />
