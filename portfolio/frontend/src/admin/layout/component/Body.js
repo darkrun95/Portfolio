@@ -5,13 +5,14 @@ import { Card, Button, Col, Row } from 'react-bootstrap';
 
 import ProfileAdminContainer from '../../container/profile/ProfileAdminContainer';
 import EducationAdminContainer from '../../container/education/EducationAdminContainer';
-import ExperienceAdminContainer from '../../container/ExperienceAdminContainer';
+import ExperienceAdminContainer from '../../container/experience/ExperienceAdminContainer';
 import ProjectAdminContainer from '../../container/ProjectAdminContainer';
 import SkillAdminContainer from '../../container/SkillAdminContainer';
 import VolunteeringAdminContainer from '../../container/VolunteeringAdminContainer';
 
 import ProfileUpdateContainer from '../../container/profile/ProfileUpdateContainer';
 import EducationUpdateContainer from '../../container/education/EducationUpdateContainer';
+import ExperienceUpdateContainer from '../../container/experience/ExperienceUpdateContainer';
 
 class Body extends Component {
 	constructor(props) {
@@ -45,6 +46,10 @@ class Body extends Component {
     			return (
     				<ExperienceAdminContainer />
     			)
+            case 'update-experience':
+                return (
+                    <ExperienceUpdateContainer />
+                )
     		case 'qualifications':
     			return (
     				<EducationAdminContainer />

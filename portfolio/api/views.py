@@ -109,6 +109,38 @@ class ExperienceList(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+class ExperienceItem(APIView):
+    def get(self, request, id=None, format=None):
+        try:
+            experience_item = Experience.objects.get(id = id)
+            serializer = serializers.ExperienceSerializer(experience_item)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+    def post(self, request, id=None, format=None):
+        if id is not None:
+            experience_item = Experience.objects.get(id = id)
+            serializer = serializers.ExperienceSerializer(instance = experience_item, data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        else:
+            serializer = serializers.ExperienceSerializer(data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+    def delete(self, request, id, format=None):
+        try:
+            experience_item = Experience.objects.get(id = id)
+            experience_item.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Exception as e:
+            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
 class EducationList(APIView):
     permission_classes = (permissions.AllowAny, )
     

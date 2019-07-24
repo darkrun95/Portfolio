@@ -90,6 +90,22 @@ class UserSerializer(serializers.ModelSerializer):
         ]
 
 class ExperienceSerializer(serializers.ModelSerializer):
+    def update(self, instance, validated_data):
+        instance.order          = validated_data['order']
+        instance.company_name   = validated_data['company_name']
+        instance.duration       = validated_data['duration']
+        instance.role           = validated_data['role']
+        instance.display_url    = validated_data['display_url']
+        instance.url            = validated_data['url']
+        instance.description    = validated_data['description']
+        instance.save()
+        return instance
+
+    def create(self, validated_data):
+        instance = self.Meta.model(**validated_data)
+        instance.save()
+        return instance
+
     class Meta:
         model = Experience
         fields = '__all__'

@@ -8,6 +8,7 @@ import {
     Button 
 } from 'react-bootstrap';
 import { _ } from 'underscore';
+import RichTextEditor from '../../utils/RichTextEditor.js';
 
 class Experience extends Component {
     constructor(props) {
@@ -69,8 +70,8 @@ class Experience extends Component {
                                                                 <strong>{ item.display_url }</strong>
                                                             </a>
                                                         </li>
-                                                        <li>{ item.description }</li>
                                                     </ul>
+                                                    <RichTextEditor content={ JSON.parse(item.description) } />
                                                 </span>
                                             </div>
                                         </div>
