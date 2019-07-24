@@ -37,7 +37,7 @@ class Body extends Component {
     			return (
     				<ProfileAdminContainer />
     			)
-            case 'admin-profile':
+            case 'update-profile':
                 return (
                     <ProfileUpdateContainer />
                 )
@@ -49,7 +49,7 @@ class Body extends Component {
     			return (
     				<EducationAdminContainer />
     			)
-            case 'admin-qualifications':
+            case 'update-qualifications':
                 return (
                     <EducationUpdateContainer />
                 )

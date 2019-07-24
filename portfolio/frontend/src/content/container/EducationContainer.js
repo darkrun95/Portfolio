@@ -36,8 +36,6 @@ class EducationContainer extends Component {
             this.setState({
                 education_list: json,
             })
-
-            // console.log(this.state)
         })
         .catch((error) => {
             this.setState({

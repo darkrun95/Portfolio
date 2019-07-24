@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Body from '../component/Body.js'
+import Body from '../component/Body.js';
+import { withRouter } from "react-router-dom";
 
 import store from '../../../store';
 
@@ -25,4 +26,4 @@ class BodyContainer extends Component {
 	}
 }
 
-export default BodyContainer;
+export default withRouter(BodyContainer);

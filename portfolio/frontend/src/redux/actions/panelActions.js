@@ -17,3 +17,4 @@ export function setImage(profile_image) {
 		})
 	}
 }
+

@@ -11,6 +11,7 @@ class ProfileUpdateContainer extends Component {
         this.is_cancelled = false
         this.state = {
 			profile: undefined,
+            redirect: false
 		}
 
         store.subscribe(() => {

@@ -119,6 +119,30 @@ class EducationList(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
+class EducationItem(APIView):
+    def get(self, request, id=None, format=None):
+        try:
+            education_item = Education.objects.get(id = id)
+            serializer = serializers.EducationSerializer(education_item)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+    def post(self, request, id=None, format=None):
+        if id is not None:
+            education_item = Education.objects.get(id = id)
+            serializer = serializers.EducationSerializer(instance = education_item, data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        else:
+            serializer = serializers.EducationSerializer(data = request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
 class ProjectList(APIView):
     permission_classes = (permissions.AllowAny, )
     

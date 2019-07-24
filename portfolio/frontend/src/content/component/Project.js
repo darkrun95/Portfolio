@@ -60,9 +60,6 @@ class Project extends Component {
                                 project_list.map((item, index) => {
                                     return (
                                         <div className="inintoku-list-item" key={`${index}`}>
-                                            <div className="inintoku-icon-section">
-                                                <hr />
-                                            </div>
                                             <div className="inintoku-university-listing">
                                                 <p className="inintoku-university-name">
                                                     <strong>

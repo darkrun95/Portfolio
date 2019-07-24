@@ -25,9 +25,13 @@ class EducationAdmin extends Component {
         }
     }
 
-    initiateFormUpdate() {
+    initiateFormUpdate(id = undefined) {
         const { initiateFormUpdateCallback } = this.props;
-        initiateFormUpdateCallback("admin-qualifications");
+        if (id === undefined) {
+            initiateFormUpdateCallback("update-qualifications");
+        } else {
+            initiateFormUpdateCallback("update-qualifications", id);
+        }
     }
 
     render() {
@@ -45,7 +49,7 @@ class EducationAdmin extends Component {
                                                 { item.college_name }<br/> <small>{ item.course }</small>
                                             </Card.Subtitle>
                                             <Button 
-                                                onClick={ (event)=>{ console.log(event.target.value) } }
+                                                onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
                                                 value={ item.id }
                                                 variant="outline-warning">Edit</Button> &nbsp;
                                             <Button 
@@ -61,7 +65,8 @@ class EducationAdmin extends Component {
                             <Card.Body>
                                 <Card.Text>
                                     <Button 
-                                        onClick={ this.initiateFormUpdate }
+                                        value = { undefined }
+                                        onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
                                         variant="outline-success">
                                         <span>&#43;</span> Add
                                     </Button>

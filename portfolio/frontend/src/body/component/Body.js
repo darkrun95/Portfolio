@@ -21,10 +21,10 @@ export class Body extends Component {
                 <Route path="/projects" 	    component={ ProjectContainer }/>
                 <Route path="/volunteering"     component={ VolunteerContainer }/>
 
-                <Route path="/manage"           component={ AuthenticationContainer }/>
-                <Route path="/adminportfolio"   component={ PortfolioAdminContainer } />
-
                 <Route path="/logout"           component={ LogOutContainer } />
+
+                <Route path="/adminportfolio"   component={ PortfolioAdminContainer } />
+                <Route path="/manage"           component={ AuthenticationContainer } />
             </Switch>
 		);
 	}

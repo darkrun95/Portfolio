@@ -16,7 +16,7 @@ class ProfileAdmin extends Component {
 
     initiateFormUpdate() {
         const { initiateFormUpdateCallback } = this.props;
-        initiateFormUpdateCallback("admin-profile");
+        initiateFormUpdateCallback("update-profile");
     }
 
     componentDidUpdate(prevProps) {

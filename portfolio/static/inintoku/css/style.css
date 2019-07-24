@@ -164,6 +164,11 @@ a{
     margin-bottom: 2%;
 }
 
+.inintoku-list-item {
+    box-shadow: 0 0.65rem 1rem rgba(0,0,0,.2);
+    border-radius: 0.25em
+}
+
 .inintoku-icon-section {
     float: left;
     width: 3%;
@@ -172,8 +177,7 @@ a{
 
 .inintoku-university-listing {
     width: 77%;
-    padding-left: 3%;
-    border-left: 1px solid var(--main-font-color);
+    padding: 3%;
     display: inline-block;
 }
 

@@ -1,9 +1,10 @@
-import { Editor } from 'slate-react'
-import { Value } from 'slate'
+import { Editor } from 'slate-react';
+import { Value } from 'slate';
 
-import React, { Component } from 'react'
-import { isKeyHotkey } from 'is-hotkey'
-import { Image } from 'react-bootstrap'
+import React, { Component } from 'react';
+import { isKeyHotkey } from 'is-hotkey';
+import { Image } from 'react-bootstrap';
+import { _ } from 'underscore';
 
 const DEFAULT_NODE = 'paragraph'
 
@@ -13,23 +14,28 @@ const isUnderlinedHotkey = isKeyHotkey('mod+u')
 const isCodeHotkey = isKeyHotkey('mod+`')
 
 class RichTextEditor extends React.Component {
-    state = {
-        value: Value.fromJSON({
-            document: {
-                nodes: [
-                    {
-                        object: 'block',
-                        type: 'paragraph',
-                        nodes: [
-                            {
-                                object: 'text',
-                                text: 'A line of text in a paragraph.',
-                            },
-                        ],
-                    },
-                ],
-            },
-        }),
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            value: Value.fromJSON(props.content),
+        }
+
+        localStorage.setItem('ap-content', JSON.stringify(props.content))
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!_.isEqual(prevProps, this.props)){
+            this.setState({
+                value: Value.fromJSON(this.props.content),
+            })
+
+            localStorage.setItem('ap-content', JSON.stringify(this.props.content))
+        }
+    }
+
+    componentWillUnmount() {
+        localStorage.removeItem('ap-content');
     }
 
     hasMark = type => {
@@ -47,25 +53,30 @@ class RichTextEditor extends React.Component {
     }
 
     render() {
+        const { renderToolBar } = this.props;
         return (
             <div>
-                <div className="inintoku-toolbar">
-                    { this.renderMarkButton('bold', '/static/inintoku/img/bold.png') }
-                    { this.renderMarkButton('italic', '/static/inintoku/img/italic.png') }
-                    { this.renderMarkButton('underlined', '/static/inintoku/img/underline.png') }
-                    { this.renderMarkButton('code', '/static/inintoku/img/code.png') }
-                    { this.renderBlockButton('heading-one', '/static/inintoku/img/h1.png') }
-                    { this.renderBlockButton('heading-two', '/static/inintoku/img/h2.png') }
-                    { this.renderBlockButton('numbered-list', '/static/inintoku/img/numberedlist.png') }
-                    { this.renderBlockButton('bulleted-list', '/static/inintoku/img/unorderedlist.png') }
-                </div>
+                {
+                    renderToolBar === undefined ? "" :
+                    <div className="inintoku-toolbar">
+                        { this.renderMarkButton('bold', '/static/inintoku/img/bold.png') }
+                        { this.renderMarkButton('italic', '/static/inintoku/img/italic.png') }
+                        { this.renderMarkButton('underlined', '/static/inintoku/img/underline.png') }
+                        { this.renderMarkButton('code', '/static/inintoku/img/code.png') }
+                        { this.renderBlockButton('heading-one', '/static/inintoku/img/h1.png') }
+                        { this.renderBlockButton('heading-two', '/static/inintoku/img/h2.png') }
+                        { this.renderBlockButton('numbered-list', '/static/inintoku/img/numberedlist.png') }
+                        { this.renderBlockButton('bulleted-list', '/static/inintoku/img/unorderedlist.png') }
+                    </div>
+                }
                 <Editor
                     ref={ this.ref }
                     value={ this.state.value }
-                    onChange={this.onChange}
-                    onKeyDown={this.onKeyDown}
-                    renderBlock={this.renderBlock}
-                    renderMark={this.renderMark}
+                    onChange={ this.onChange }
+                    onKeyDown={ this.onKeyDown }
+                    renderBlock={ this.renderBlock }
+                    renderMark={ this.renderMark }
+                    readOnly={ renderToolBar === undefined ? true : false }
                 />
             </div>
         )
@@ -141,6 +152,8 @@ class RichTextEditor extends React.Component {
     }
 
     onChange = ({ value }) => {
+        const content = JSON.stringify(value.toJSON())
+        localStorage.setItem('ap-content', content)
         this.setState({ value })
     }
 

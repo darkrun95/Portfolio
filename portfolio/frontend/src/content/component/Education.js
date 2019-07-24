@@ -7,6 +7,7 @@ import {
     Button 
 } from 'react-bootstrap';
 import { _ } from 'underscore';
+import RichTextEditor from '../../utils/RichTextEditor.js';
 
 class Education extends Component {
     constructor(props) {
@@ -53,9 +54,6 @@ class Education extends Component {
                                 education_list.map((item, index) => {
                                     return (
                                         <div className="inintoku-list-item" key={`${index}`}>
-                                            <div className="inintoku-icon-section">
-                                                <hr />
-                                            </div>
                                             <div className="inintoku-university-listing">
                                                 <p className="inintoku-university-name">
                                                     <strong>{ item.college_name }</strong><br/>
@@ -65,9 +63,7 @@ class Education extends Component {
                                                     <span>{ item.course }</span>
                                                 </p>
                                                 <span className="inintoku-university-description">
-                                                    <ul>
-                                                        <li>{ item.description }</li>
-                                                    </ul>
+                                                    <RichTextEditor content={ JSON.parse(item.description) } />
                                                 </span>
                                             </div>
                                         </div>

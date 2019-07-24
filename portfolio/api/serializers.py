@@ -95,6 +95,20 @@ class ExperienceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class EducationSerializer(serializers.ModelSerializer):
+    def update(self, instance, validated_data):
+        instance.order        = validated_data['order']
+        instance.college_name = validated_data['college_name']
+        instance.duration     = validated_data['duration']
+        instance.course       = validated_data['course']
+        instance.description  = validated_data['description']
+        instance.save()
+        return instance
+
+    def create(self, validated_data):
+        instance = self.Meta.model(**validated_data)
+        instance.save()
+        return instance
+
     class Meta:
         model = Education
         fields = '__all__'

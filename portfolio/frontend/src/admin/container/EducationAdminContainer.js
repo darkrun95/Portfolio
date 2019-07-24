@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { setPanel } from '../../redux/actions/panelActions';
+import { setEducation } from '../../redux/actions/fieldActions';
 import EducationAdmin from '../component/EducationAdmin.js';
 
 class EducationAdminContainer extends Component {
@@ -23,10 +24,14 @@ class EducationAdminContainer extends Component {
         return response
     }
 
-    initiateFormUpdate(panel) {
+    initiateFormUpdate(panel, id = undefined) {
         this.props.setPanel({
             selectedElement: panel,
             changePanel: false
+        })
+
+        this.props.setEducation({
+            education_id: id
         })
     }
 
@@ -65,4 +70,4 @@ class EducationAdminContainer extends Component {
     }
 }
 
-export default connect(null, { setPanel })(EducationAdminContainer);
+export default connect(null, { setPanel, setEducation })(EducationAdminContainer);
