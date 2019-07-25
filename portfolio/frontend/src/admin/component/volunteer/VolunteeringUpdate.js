@@ -56,12 +56,12 @@ class VolunteeringUpdate extends Component {
         		<Form>
                     <Form.Row>
                         <Form.Group as={Col} controlId="formGridVolunteerName">
-                            <Form.Label>College Name</Form.Label>    
+                            <Form.Label>Volunteer Name</Form.Label>    
                             <Form.Control name="volunteer_name" type="text" value={ volunteering_item.volunteer_name } onChange={ this.handleChange } />
                         </Form.Group>
 
                         <Form.Group as={Col} controlId="formGridOrganization">
-                            <Form.Label>Course Name</Form.Label>
+                            <Form.Label>Organization</Form.Label>
                             <Form.Control name="organization" type="text" value={ volunteering_item.organization } onChange={ this.handleChange } />
                         </Form.Group>
                     </Form.Row>

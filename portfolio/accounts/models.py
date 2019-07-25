@@ -42,7 +42,7 @@ class Skill(models.Model):
         ('INDUSTRY_KNOWLEDGE', 'Industry Knowledge')
     )
 
-    skill_name = models.CharField(max_length = 20)
+    skill_name = models.CharField(max_length = 20, unique = True)
     skill_type = models.CharField(choices = SKILL_TYPES, max_length = 20, blank = True, default=SKILL_TYPES[0][0])
 
     class Meta:

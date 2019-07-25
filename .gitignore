@@ -2,4 +2,9 @@ config/
 portfolio/frontend/node_modules/
 portfolio/.ebextensions/
 portfolio/.elasticbeanstalk/
+portfolio/inintoku/__pycache__/
+portfolio/frontend/__pycache__/
+portfolio/api/__pycache__/
+portfolio/accounts/__pycache__/
 portfolio/inintoku/settings.py
+

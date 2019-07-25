@@ -25,6 +25,10 @@ urlpatterns = [
     path('volunteer-list/',     views.VolunteerList.as_view()),
     path('volunteer/',          views.VolunteerItem.as_view()),
     path('volunteer/<int:id>/', views.VolunteerItem.as_view()),
+
+    path('project-list/',       views.ProjectList.as_view()),
+    path('project/',            views.ProjectItem.as_view()),
+    path('project/<int:id>',    views.ProjectItem.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

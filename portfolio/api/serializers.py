@@ -134,6 +134,43 @@ class ProjectSerializer(serializers.ModelSerializer):
     def get_skills(self, instance):
         return [skill.skill_name for skill in instance.skills.all()]
 
+    def update(self, instance, validated_data):
+        instance.order          = validated_data['order']
+        instance.project_name   = validated_data['project_name']
+        instance.duration       = validated_data['duration']
+        instance.project_link   = validated_data['project_link']
+        instance.description    = validated_data['description']
+        instance.save()
+
+        skill_data = validated_data.pop('skills')
+        instance_skills = instance.skills.all()
+        for skill in instance_skills:
+            try:
+                skill_entry = Skill.objects.get(skill_name = skill.skill_name)
+                skill_entry.skill_name = skill['skill_name']
+                skill_entry.skill_type = skill['skill_type']
+                skill_entry.save()
+            except Skill.DoesNotExist as e:
+                print("Creating new skill")
+                # Skill.objects.create(project = instance, **skill)
+
+                # Creating skill without assigning to Project
+                Skill.objects.create(**skill)
+            except Exception as e:
+                print("Something went wrong during update")
+                print("Performing cleanup")
+                print("Identifying affected skill")
+                print(e)
+        return instance
+
+    def create(self, validated_data):
+        skill_data = validated_data.pop('skills')
+        instance = self.Meta.model(**validated_data)
+        instance.save()
+
+        Skill.objects.create(project = instance, **skill_data)
+        return instance
+
     class Meta:
         model = Project
         fields = [
