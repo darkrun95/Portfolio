@@ -42,6 +42,10 @@ html, body {
     margin-top: -10%;
 }
 
+.inintoku-inline {
+    display: inline-block;
+}
+
 .form-control:disabled {
     background-color: var(--main-white);
 }
@@ -249,7 +253,6 @@ hr {
 
 .inintoku-vertical-center {
     display: flex;
-    justify-content: center;
     align-items: center; 
 }
 
@@ -327,8 +330,20 @@ button.close {
     padding-left: 0px;
 }
 
+.inintoku-listing-left {
+    width: 70%;
+    float: left;
+}
+
+.inintoku-listing-right {
+    width: 30%;
+    float: right;
+    text-align: right;
+}
+
 .inintoku-admin-entry-card {
-    margin-bottom: 5%;
+    margin-bottom: 1%;
+    width: 100%;
 }
 /* End Custom Styling */
 

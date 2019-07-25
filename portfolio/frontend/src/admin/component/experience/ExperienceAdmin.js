@@ -49,39 +49,37 @@ class ExperienceAdmin extends Component {
                     {
                         experience_list.map((item, index) => {
                             return (
-                                <Col lg={4} md={6} sm={12} xs={12} key={`${index}`}>
+                                <Col lg={12} md={12} sm={12} xs={12} key={`${index}`}>
                                     <Card className="inintoku-admin-entry-card">
                                         <Card.Body>
-                                            <Card.Subtitle className="mb-2">
-                                                { item.company_name }<br/> <small>{ item.role }</small>
-                                            </Card.Subtitle>
-                                            <Button 
-                                                onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
-                                                value={ item.id }
-                                                variant="outline-warning">Edit</Button> &nbsp;
-                                            <Button 
-                                                onClick={ (event)=>{ this.deleteExperience(event.target.value) } }
-                                                value={ item.id }
-                                                variant="outline-danger">Delete</Button>
+                                            <span className="inintoku-inline inintoku-listing-left">
+                                                <Card.Subtitle className="mb-2">
+                                                    { item.company_name }<br/> <small>{ item.role }</small>
+                                                </Card.Subtitle>
+                                            </span>
+                                            <span className="inintoku-inline inintoku-listing-right">
+                                                <Button 
+                                                    onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
+                                                    value={ item.id }
+                                                    variant="outline-warning">Edit</Button> &nbsp;
+                                                <Button 
+                                                    onClick={ (event)=>{ this.deleteExperience(event.target.value) } }
+                                                    value={ item.id }
+                                                    variant="outline-danger">Delete</Button>
+                                            </span>
                                         </Card.Body>
                                     </Card>
                                 </Col>
                             )
                         })
                     }
-                    <Col lg={4} md={6} sm={12} xs={12} className="inintoku-vertical-center">
-                        <Card>
-                            <Card.Body>
-                                <Card.Text>
-                                    <Button 
-                                        value = { undefined }
-                                        onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
-                                        variant="outline-success">
-                                        <span>&#43;</span> Add
-                                    </Button>
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
+                    <Col lg={4} md={4} sm={4} xs={4} className="inintoku-vertical-center">
+                        <Button 
+                            value = { undefined }
+                            onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
+                            variant="outline-success">
+                            New Activity
+                        </Button>
                     </Col>
                 </Row>
             </div>
