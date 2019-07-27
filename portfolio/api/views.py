@@ -267,7 +267,6 @@ class VolunteerItem(APIView):
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
-            print(serializer.errors)
             return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     def delete(self, request, id, format=None):
@@ -281,8 +280,6 @@ class VolunteerItem(APIView):
 class ProfileImage(APIView):
     def post(self, request, format=None):
         user = User.objects.get(username=request.user.username)
-
-        print(request.data)
         data = {
             'email': user.email,
             'first_name': user.first_name,
