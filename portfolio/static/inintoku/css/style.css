@@ -345,6 +345,17 @@ button.close {
     margin-bottom: 1%;
     width: 100%;
 }
+
+.inintoku-accordion-class {
+    border: 1px solid rgba(0,0,0,0.14) !important;
+    border-radius: 0.25em !important;
+}
+
+.inintoku-accordion-button {
+    margin: 1%;
+    display: inline-flex;
+    justify-content: flex-start;
+}
 /* End Custom Styling */
 
 /* Begin Responsive Design */

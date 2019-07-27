@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { 
     Card, 
     Button, 
-    Image,
+    Accordion,
     Col, Row
 } from 'react-bootstrap';
+import RichTextEditor from '../../../utils/RichTextEditor';
 import { _ } from 'underscore';
 
 class VolunteeringAdmin extends Component {
@@ -43,37 +44,43 @@ class VolunteeringAdmin extends Component {
 
     render() {
         const { volunteering_list } = this.state;
+        
         return (
             <div>
                 <Row>
-                    {
-                        volunteering_list.map((item, index) => {
-                            return (
-                                <Col lg={12} md={12} sm={12} xs={12} key={`${index}`}>
-                                    <Card className="inintoku-admin-entry-card">
-                                        <Card.Body>
-                                            <span className="inintoku-inline inintoku-listing-left">
-                                                <Card.Subtitle className="mb-2">
-                                                    { item.volunteer_name }<br/> <small>{ item.organization }</small>
-                                                </Card.Subtitle>
-                                            </span>
-                                            <span className="inintoku-inline inintoku-listing-right">
-                                                <Button 
-                                                    onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
-                                                    value={ item.id }
-                                                    variant="outline-warning">Edit</Button> &nbsp;
-                                                <Button 
-                                                    onClick={ (event)=>{ this.deleteVolunteering(event.target.value) } }
-                                                    value={ item.id }
-                                                    variant="outline-danger">Delete</Button>
-                                            </span>
-                                        </Card.Body>
+                    <Col lg={12} md={12} sm={12} xs={12} className="inintoku-vertical-space">
+                        <Accordion>
+                        {
+                            volunteering_list.map((item, index) => {
+                                return (
+                                    <Card key={`${index}`} className="inintoku-accordion-class">
+                                        <Accordion.Toggle as={ Card.Header } eventKey={`${index}`}>
+                                            <h6>{ item.volunteer_name }</h6><span>{ item.organization }</span>
+                                        </Accordion.Toggle>
+                                        <Accordion.Collapse eventKey={`${index}`}>
+                                            <Card.Body>
+                                                <RichTextEditor content={ JSON.parse(item.description) } />
+                                                
+                                                <div className="inintoku-accordion-button">
+                                                    <Button 
+                                                        onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
+                                                        value={ item.id }
+                                                        variant="outline-warning">Edit</Button> &nbsp;
+                                                    <Button 
+                                                        onClick={ (event)=>{ this.deleteEducation(event.target.value) } }
+                                                        value={ item.id }
+                                                        variant="outline-danger">Delete</Button>
+                                                </div>
+                                            </Card.Body>
+                                        </Accordion.Collapse>
                                     </Card>
-                                </Col>
-                            )
-                        })
-                    }
-                    <Col lg={4} md={4} sm={4} xs={4} className="inintoku-vertical-center">
+                                )
+                            })
+                        }
+                        </Accordion>
+                    </Col>
+
+                    <Col lg={4} md={4} sm={6} xs={6} className="inintoku-vertical-center">
                         <Button 
                             value = { undefined }
                             onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
