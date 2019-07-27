@@ -67,7 +67,7 @@ class VolunteeringAdmin extends Component {
                                                         value={ item.id }
                                                         variant="outline-warning">Edit</Button> &nbsp;
                                                     <Button 
-                                                        onClick={ (event)=>{ this.deleteEducation(event.target.value) } }
+                                                        onClick={ (event)=>{ this.deleteVolunteering(event.target.value) } }
                                                         value={ item.id }
                                                         variant="outline-danger">Delete</Button>
                                                 </div>
@@ -80,7 +80,7 @@ class VolunteeringAdmin extends Component {
                         </Accordion>
                     </Col>
 
-                    <Col lg={4} md={4} sm={6} xs={6} className="inintoku-vertical-center">
+                    <Col lg={4} md={4} sm={6} xs={6} className="inintoku-vertical-center inintoku-bottom-space">
                         <Button 
                             value = { undefined }
                             onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
