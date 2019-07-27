@@ -267,6 +267,7 @@ class VolunteerItem(APIView):
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_200_OK)
+            print(serializer.errors)
             return Response(status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     def delete(self, request, id, format=None):

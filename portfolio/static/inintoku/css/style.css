@@ -20,7 +20,7 @@ html, body {
 
 #app {
     font-size: 15px;
-    height: 100vh;
+    max-height: 100vh;
     padding-top: 10%;
     color: var(--main-font-color);
 }
@@ -251,9 +251,13 @@ hr {
     margin-bottom: 5%;
 }
 
+.inintoku-bottom-space {
+    margin-bottom: 2%;
+}
+
 .inintoku-vertical-center {
     display: flex;
-    align-items: center; 
+    align-items: flex-start; 
 }
 
 .inintoku-base-align {
@@ -327,6 +331,7 @@ button.close {
 
 .inintoku-admin-dashboard {
     height: 100vh;
+    overflow: scroll;
     padding-left: 0px;
 }
 
