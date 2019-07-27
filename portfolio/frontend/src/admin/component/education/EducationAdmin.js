@@ -73,7 +73,7 @@ class EducationAdmin extends Component {
                             )
                         })
                     }
-                    <Col lg={4} md={4} sm={4} xs={4} className="inintoku-vertical-center">
+                    <Col lg={4} md={4} sm={6} xs={6} className="inintoku-vertical-center">
                         <Button 
                             value = { undefined }
                             onClick={ (event)=>{ this.initiateFormUpdate(event.target.value) } }
