@@ -55,7 +55,7 @@ class ExperienceAdmin extends Component {
                                 return (
                                     <Card key={`${index}`} className="inintoku-accordion-class">
                                         <Accordion.Toggle as={ Card.Header } eventKey={`${index}`}>
-                                            <h6>{ item.company_name }</h6><span>{ item.role }</span>
+                                            <strong>{ item.company_name }</strong><span>{ item.role }</span>
                                         </Accordion.Toggle>
                                         <Accordion.Collapse eventKey={`${index}`}>
                                             <Card.Body>
