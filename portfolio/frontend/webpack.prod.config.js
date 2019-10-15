@@ -14,7 +14,7 @@ config.plugins = config.plugins.concat([
     new webpack.DefinePlugin({
         'process.env': {
             'NODE_ENV': JSON.stringify('production'),
-            'BASE_API_URL': JSON.stringify('http://www.arunpottekat.me/'),
+            'BASE_API_URL': JSON.stringify('https://arunpottekat.me/'),
         }
     }),
 
