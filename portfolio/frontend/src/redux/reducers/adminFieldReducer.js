@@ -3,7 +3,7 @@ import {
 	SET_EXPERIENCE, 
 	SET_VOLUNTEER,
 	SET_PROJECT,
-} from './types';
+} from '../actions/types';
 
 const initialState = {
 	education_id: undefined,
