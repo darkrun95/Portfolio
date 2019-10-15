@@ -1,1 +1,1 @@
-{"status":"error","error":"ModuleNotFoundError","message":"Module not found: Error: Can't resolve './types' in '/Users/arun/Data-Science/portfolio/frontend/src/redux/reducers'"}
+{"status":"done","chunks":{"inintoku":[{"name":"inintoku-2ae56cdbbcbe8ab7d194.js","path":"/Users/arun/Data-Science/portfolio/static/frontend/bundles/prod/inintoku-2ae56cdbbcbe8ab7d194.js"}],"vendors":[{"name":"vendors-2ae56cdbbcbe8ab7d194.js","path":"/Users/arun/Data-Science/portfolio/static/frontend/bundles/prod/vendors-2ae56cdbbcbe8ab7d194.js"}]}}
