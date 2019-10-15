@@ -26,6 +26,7 @@ favicon_view = RedirectView.as_view(
 urlpatterns = [
     path('favicon.ico', favicon_view),
     path('admin/', admin.site.urls),
+    url(r'^health/?', include('health_check.urls')),
     path('api/', include('api.urls', namespace='api')),
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     path('', include('frontend.urls', namespace='frontend')),
